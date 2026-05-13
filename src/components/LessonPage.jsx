@@ -5,7 +5,7 @@ import { CURRICULUM } from '../data/curriculum'
 import { SUBJECTS } from '../data/subjects'
 import WorldMapGame from './games/WorldMapGame'
 import WorldMapDisplay from './WorldMapDisplay'
-import EgyptGame from './games/EgyptGame'
+import EgyptStory from './games/EgyptStory'
 
 const FLIP_COLORS = [
   { bg: '#FF85A1', dark: '#cc5a74' },
@@ -161,7 +161,7 @@ export default function LessonPage() {
         {activeTab === 'play' && (
           <div className="rounded-chunkier bg-white border border-pink-100 p-4" style={{ boxShadow: '0 2px 0 #ffd6e7' }}>
             {content.game_type === 'continents' ? <WorldMapGame /> :
-             content.game_type === 'egypt'      ? <EgyptGame /> :
+             content.game_type === 'egypt'      ? <EgyptStory /> :
              <ComingSoonGame gameType={content.game_type} />}
           </div>
         )}
