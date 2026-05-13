@@ -26,7 +26,7 @@ const CHAPTERS = [
     emoji: '👑',
     kind: 'image',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CairoEgMuseumTaaMaskMostlyPhotographed.jpg/330px-CairoEgMuseumTaaMaskMostlyPhotographed.jpg',
-    imgAlt: "The golden mask of Tutankhamun in the Cairo Egyptian Museum",
+    imgAlt: 'The golden mask of Tutankhamun in the Cairo Egyptian Museum',
     imgCaption: "Tutankhamun's solid gold mask — the most photographed object in the world",
     body: "The rulers of Ancient Egypt were called Pharaohs. People believed the pharaoh was a god on Earth — the son of Ra, the sun god! They wore special crowns and carried a crook and flail as royal symbols. The most famous pharaoh is Tutankhamun — the 'boy king' who became pharaoh at just 9 years old! Queen Hatshepsut was one of history's most powerful female rulers.",
     fact: "When Tutankhamun's tomb was discovered in 1922, his golden mask was still perfectly in place — after 3,300 years!",
@@ -85,8 +85,8 @@ const CHAPTERS = [
 
 function MapScene() {
   return (
-    <div className="relative w-full rounded-chunky overflow-hidden" style={{ background: '#B3D9F2', height: 200 }}>
-      <svg viewBox="0 0 1000 500" className="w-full" style={{ height: 200 }}>
+    <div className="relative w-full rounded-chunky overflow-hidden" style={{ background: '#B3D9F2', height: 300 }}>
+      <svg viewBox="0 0 1000 500" className="w-full" style={{ height: 300 }}>
         <rect width="1000" height="500" fill="#B3D9F2" />
         <line x1="0" y1="250" x2="1000" y2="250" stroke="white" strokeWidth="1.5" strokeDasharray="12,10" opacity="0.5" />
         <text x="12" y="253" fill="white" fontSize="11" opacity="0.7" fontFamily="Nunito, sans-serif" fontWeight="bold">Equator</text>
@@ -110,21 +110,21 @@ function MapScene() {
   )
 }
 
-function ImgCard({ src, alt, caption }) {
+function ImgCard({ src, alt, caption, height = 300 }) {
   const [loaded, setLoaded] = useState(false)
   const [errored, setErrored] = useState(false)
 
   if (errored) {
     return (
       <div className="w-full rounded-chunky flex items-center justify-center text-gray-400 text-sm font-bold"
-        style={{ height: 200, background: '#f3f4f6', border: '2px dashed #d1d5db' }}>
+        style={{ height, background: '#f3f4f6', border: '2px dashed #d1d5db' }}>
         📷 Image unavailable
       </div>
     )
   }
 
   return (
-    <div className="relative w-full rounded-chunky overflow-hidden" style={{ height: 200 }}>
+    <div className="relative w-full rounded-chunky overflow-hidden" style={{ height }}>
       {!loaded && (
         <div className="absolute inset-0 flex items-center justify-center" style={{ background: '#fef3c7' }}>
           <div className="w-8 h-8 rounded-full border-4 border-yellow-400 border-t-transparent animate-spin" />
@@ -134,7 +134,7 @@ function ImgCard({ src, alt, caption }) {
         src={src}
         alt={alt}
         className="w-full h-full object-cover transition-opacity duration-300"
-        style={{ height: 200, opacity: loaded ? 1 : 0 }}
+        style={{ height, opacity: loaded ? 1 : 0 }}
         onLoad={() => setLoaded(true)}
         onError={() => setErrored(true)}
       />
@@ -149,8 +149,8 @@ function ImgCard({ src, alt, caption }) {
 function DoubleImageScene({ img, imgAlt, imgCaption, img2, img2Alt, img2Caption }) {
   return (
     <div className="grid grid-cols-2 gap-2">
-      <ImgCard src={img} alt={imgAlt} caption={imgCaption} />
-      <ImgCard src={img2} alt={img2Alt} caption={img2Caption} />
+      <ImgCard src={img} alt={imgAlt} caption={imgCaption} height={220} />
+      <ImgCard src={img2} alt={img2Alt} caption={img2Caption} height={220} />
     </div>
   )
 }
