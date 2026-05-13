@@ -1,127 +1,215 @@
-import { useMemo, useState } from 'react'
+import { useState, useRef, useCallback, useMemo } from 'react'
 
 const CONTINENTS = [
-  { key: 'asia',     name: 'Asia',          color: '#8B5CF6' },
-  { key: 'africa',   name: 'Afrika',        color: '#F59E0B' },
-  { key: 'namerica', name: 'Amerika Utara', color: '#F97316' },
-  { key: 'samerica', name: 'Amerika Selatan', color: '#22C55E' },
-  { key: 'europe',   name: 'Eropa',         color: '#EC4899' },
-  { key: 'australia',name: 'Australia',     color: '#FB7185' },
-  { key: 'antarctica', name: 'Antartika',   color: '#7DD3FC' },
+  { name: 'Asia',           color: '#FF85A1', emoji: '🗾', fact: 'Benua terbesar di dunia!' },
+  { name: 'Afrika',         color: '#FFB347', emoji: '🌍', fact: 'Rumah singa dan gajah!' },
+  { name: 'Eropa',          color: '#87CEEB', emoji: '🏰', fact: 'Banyak istana dan sejarah!' },
+  { name: 'Amerika Utara',  color: '#90EE90', emoji: '🦅', fact: 'Rumah elang botak!' },
+  { name: 'Amerika Selatan',color: '#DDA0DD', emoji: '🦜', fact: 'Hutan Amazon ada di sini!' },
+  { name: 'Australia',      color: '#F4A460', emoji: '🦘', fact: 'Rumah kanguru!' },
+  { name: 'Antartika',      color: '#7DD3FC', emoji: '🐧', fact: 'Tempat paling dingin di bumi!' },
 ]
 
-function shuffle(arr) {
-  const a = arr.slice()
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
+function Confetti() {
+  const particles = useMemo(() =>
+    Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      color: ['#FF85A1','#FFD700','#87CEEB','#90EE90','#DDA0DD','#FFB347'][Math.floor(Math.random() * 6)],
+      rotation: Math.random() * 360,
+      size: 8 + Math.random() * 8,
+      duration: 1.5 + Math.random() * 2,
+      delay: Math.random() * 0.5,
+    })), [])
+
+  return (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="absolute confetti-fall"
+          style={{
+            left: `${p.x}%`,
+            top: '-20px',
+            width: p.size,
+            height: p.size,
+            backgroundColor: p.color,
+            borderRadius: p.id % 2 === 0 ? '50%' : '2px',
+            transform: `rotate(${p.rotation}deg)`,
+            animationDuration: `${p.duration}s`,
+            animationDelay: `${p.delay}s`,
+          }}
+        />
+      ))}
+    </div>
+  )
 }
 
 export default function ContinentsGame() {
-  const initialLabels = useMemo(() => shuffle(CONTINENTS), [])
-  const [labels] = useState(initialLabels)
-  const [matched, setMatched] = useState({}) // { continentKey: labelKey }
-  const [selected, setSelected] = useState(null) // labelKey
-  const [wrong, setWrong] = useState(null) // continentKey that just got a wrong drop
-  const [resetKey, setResetKey] = useState(0)
+  const [placed, setPlaced] = useState({})
+  const [dropStates, setDropStates] = useState({})
+  const [shakingLabel, setShakingLabel] = useState(null)
+  const [won, setWon] = useState(false)
+  const draggedRef = useRef(null)
 
-  const matchedLabels = new Set(Object.values(matched))
-  const score = Object.keys(matched).length
-  const done = score === CONTINENTS.length
+  const correctCount = Object.entries(placed).filter(([box, label]) => box === label).length
 
-  function attempt(continentKey, labelKey) {
-    if (!labelKey) return
-    if (matched[continentKey]) return
-    if (matchedLabels.has(labelKey)) return
-    if (continentKey === labelKey) {
-      setMatched((m) => ({ ...m, [continentKey]: labelKey }))
-      setSelected(null)
+  const handleDragStart = useCallback((name) => {
+    draggedRef.current = name
+  }, [])
+
+  const handleDrop = useCallback((targetName) => {
+    const dragged = draggedRef.current
+    if (!dragged) return
+
+    if (dragged === targetName) {
+      setPlaced((prev) => {
+        const next = { ...prev, [targetName]: dragged }
+        const newCorrect = Object.keys(next).filter((k) => next[k] === k).length
+        if (newCorrect === CONTINENTS.length) {
+          setTimeout(() => setWon(true), 400)
+        }
+        return next
+      })
+      setDropStates((prev) => ({ ...prev, [targetName]: 'correct' }))
     } else {
-      setWrong(continentKey)
-      setTimeout(() => setWrong(null), 500)
-      setSelected(null)
+      setDropStates((prev) => ({ ...prev, [targetName]: 'wrong' }))
+      setShakingLabel(dragged)
+      setTimeout(() => {
+        setDropStates((prev) => ({ ...prev, [targetName]: 'idle' }))
+        setShakingLabel(null)
+      }, 600)
     }
+    draggedRef.current = null
+  }, [])
+
+  const correctlyPlaced = new Set(
+    Object.entries(placed).filter(([box, label]) => box === label).map(([, label]) => label)
+  )
+  const availableLabels = CONTINENTS.filter((c) => !correctlyPlaced.has(c.name))
+
+  function handleReset() {
+    setPlaced({})
+    setDropStates({})
+    setShakingLabel(null)
+    setWon(false)
   }
 
-  function reset() {
-    setMatched({})
-    setSelected(null)
-    setWrong(null)
-    setResetKey((k) => k + 1)
-  }
-
-  if (done) {
-    return <Celebration onPlayAgain={reset} />
+  if (won) {
+    return (
+      <>
+        <Confetti />
+        <div className="flex flex-col items-center justify-center min-h-[400px] gap-5 text-center p-4 relative z-10">
+          <div className="text-7xl animate-bounce-slow">🎉</div>
+          <h2 className="font-display text-3xl text-primary">Amazing, Olivia!</h2>
+          <p className="text-gray-600 font-bold">Kamu tahu semua 7 benua! Luar biasa!</p>
+          <div className="grid grid-cols-2 gap-2 mt-1 w-full max-w-sm">
+            {CONTINENTS.map((c) => (
+              <div
+                key={c.name}
+                className="flex items-center gap-2 rounded-chunky px-3 py-2 font-bold text-sm text-left"
+                style={{ backgroundColor: c.color + '33' }}
+              >
+                <span className="text-lg">{c.emoji}</span>
+                <div>
+                  <div className="font-display text-sm leading-tight">{c.name}</div>
+                  <div className="text-xs font-normal text-gray-600">{c.fact}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={handleReset}
+            className="press-btn mt-2 px-8 py-3 rounded-chunky font-display text-white text-lg"
+            style={{ background: '#FF85A1', boxShadow: '0 4px 0 #cc5a74' }}
+          >
+            Main Lagi! 🔄
+          </button>
+        </div>
+      </>
+    )
   }
 
   return (
-    <div key={resetKey}>
-      <div className="flex items-center justify-between mb-4">
-        <p className="font-bold text-gray-600 text-sm sm:text-base">
-          Tap a label, then tap its continent. Or drag!
-        </p>
-        <div className="font-display text-xl text-primary">{score}/7</div>
+    <div className="flex flex-col gap-4 p-1">
+      <div className="text-center">
+        <h3 className="font-display text-xl text-primary mb-0.5">Drag & Drop Benua!</h3>
+        <p className="text-sm text-gray-500 font-bold">Seret nama benua ke kotak yang benar</p>
+        <div className="flex justify-center gap-1 mt-2">
+          {CONTINENTS.map((_, i) => (
+            <div
+              key={i}
+              className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all"
+              style={{
+                backgroundColor: i < correctCount ? '#4ade80' : '#e5e7eb',
+                color: i < correctCount ? 'white' : '#9ca3af',
+              }}
+            >
+              {i < correctCount ? '✓' : i + 1}
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:gap-4">
-        <div className="space-y-2">
-          <div className="text-xs font-bold uppercase text-gray-400 mb-1">Labels</div>
-          {labels.map((c) => {
-            const used = matchedLabels.has(c.key)
-            const isSelected = selected === c.key
-            return (
-              <button
-                key={c.key}
-                disabled={used}
-                draggable={!used}
-                onDragStart={(e) => {
-                  e.dataTransfer.setData('text/plain', c.key)
-                  setSelected(c.key)
-                }}
-                onClick={() => {
-                  if (used) return
-                  setSelected((s) => (s === c.key ? null : c.key))
-                }}
-                className={`press-btn w-full py-3 px-3 rounded-chunky font-bold text-sm sm:text-base text-left transition ${
-                  used ? 'bg-gray-100 text-gray-300 opacity-40 cursor-not-allowed' : 'bg-white'
-                } ${isSelected ? 'ring-4 ring-primary' : ''}`}
-              >
-                {used ? '✓ ' : '🏷️ '}
-                {c.name}
-              </button>
-            )
-          })}
+      <div className="grid grid-cols-2 gap-3">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs font-display text-gray-400 text-center uppercase">Nama Benua</p>
+          {availableLabels.map((c) => (
+            <div
+              key={c.name}
+              draggable
+              onDragStart={() => handleDragStart(c.name)}
+              className={`cursor-grab active:cursor-grabbing select-none rounded-chunky px-3 py-2.5 font-bold text-center text-sm border-2 transition-all ${
+                shakingLabel === c.name ? 'animate-shake' : ''
+              }`}
+              style={{
+                backgroundColor: c.color + '22',
+                borderColor: c.color,
+                color: '#333',
+              }}
+            >
+              <span className="mr-1.5">{c.emoji}</span>
+              {c.name}
+            </div>
+          ))}
+          {availableLabels.length === 0 && (
+            <p className="text-center text-gray-400 py-4 text-sm font-bold">Semua sudah ditempatkan!</p>
+          )}
         </div>
 
-        <div className="space-y-2">
-          <div className="text-xs font-bold uppercase text-gray-400 mb-1">Continents</div>
+        <div className="flex flex-col gap-2">
+          <p className="text-xs font-display text-gray-400 text-center uppercase">Target Kotak</p>
           {CONTINENTS.map((c) => {
-            const isMatched = !!matched[c.key]
-            const isWrong = wrong === c.key
+            const isCorrect = placed[c.name] === c.name
+            const state = dropStates[c.name] ?? 'idle'
             return (
               <div
-                key={c.key}
-                onDragOver={(e) => {
-                  e.preventDefault()
-                }}
-                onDrop={(e) => {
-                  e.preventDefault()
-                  const labelKey = e.dataTransfer.getData('text/plain')
-                  attempt(c.key, labelKey)
-                }}
-                onClick={() => attempt(c.key, selected)}
-                className={`rounded-chunky py-4 px-3 font-display text-base text-white text-center cursor-pointer transition ${
-                  isWrong ? 'animate-shake' : ''
+                key={c.name}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={() => handleDrop(c.name)}
+                className={`rounded-chunky px-3 py-2.5 border-2 border-dashed text-center font-bold text-sm min-h-[48px] flex items-center justify-center transition-all ${
+                  isCorrect
+                    ? 'border-green-400 bg-green-50'
+                    : state === 'wrong'
+                    ? 'border-red-400 bg-red-50 animate-shake'
+                    : 'border-gray-300 bg-gray-50'
                 }`}
-                style={{
-                  background: isMatched ? '#22C55E' : c.color,
-                  boxShadow: `0 4px 0 0 rgba(0,0,0,0.2)`,
-                  opacity: isMatched ? 0.9 : 1,
-                }}
               >
-                {isMatched ? `✓ ${c.name}` : '?'}
+                {isCorrect ? (
+                  <span className="flex items-center gap-1.5 text-green-600 font-display">
+                    <span>{c.emoji}</span> {c.name} <span>✓</span>
+                  </span>
+                ) : state === 'wrong' ? (
+                  <span className="text-red-400 font-bold text-xs">Coba lagi! ✗</span>
+                ) : (
+                  <span className="text-gray-400 text-xs font-bold">
+                    Taruh{' '}
+                    <span className="font-display" style={{ color: c.color }}>
+                      {c.name}
+                    </span>{' '}
+                    di sini
+                  </span>
+                )}
               </div>
             )
           })}
@@ -129,62 +217,11 @@ export default function ContinentsGame() {
       </div>
 
       <button
-        onClick={reset}
-        className="press-btn mt-6 bg-white text-gray-600 font-bold px-4 py-2 rounded-chunky text-sm"
+        onClick={handleReset}
+        className="press-btn bg-white text-gray-500 font-bold px-4 py-2 rounded-chunky text-sm self-start"
       >
         🔄 Reset
       </button>
-    </div>
-  )
-}
-
-function Celebration({ onPlayAgain }) {
-  return (
-    <div className="relative bg-white rounded-chunkier p-8 text-center overflow-hidden">
-      <ConfettiRain />
-      <div className="relative z-10">
-        <div className="text-8xl mb-4 animate-bounce-slow">🎉</div>
-        <h3 className="font-display text-3xl text-primary mb-2">You got all 7 continents!</h3>
-        <p className="text-gray-500 mb-6">You're a geography champion, Olivia ⭐</p>
-        <button
-          onClick={onPlayAgain}
-          className="press-btn bg-primary text-white font-display text-xl py-3 px-6 rounded-chunky"
-          style={{ boxShadow: '0 5px 0 0 #B84A6A' }}
-        >
-          Play again 🔄
-        </button>
-      </div>
-    </div>
-  )
-}
-
-function ConfettiRain() {
-  const pieces = useMemo(() => {
-    const emojis = ['🎉', '⭐', '🌟', '💖', '🎊', '🌈']
-    return Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      emoji: emojis[Math.floor(Math.random() * emojis.length)],
-      left: Math.random() * 100,
-      delay: Math.random() * 2,
-      duration: 2 + Math.random() * 2,
-    }))
-  }, [])
-  return (
-    <div className="absolute inset-0 pointer-events-none">
-      {pieces.map((p) => (
-        <span
-          key={p.id}
-          className="absolute text-2xl confetti-fall"
-          style={{
-            left: `${p.left}%`,
-            top: '-30px',
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
-          }}
-        >
-          {p.emoji}
-        </span>
-      ))}
     </div>
   )
 }
