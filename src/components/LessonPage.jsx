@@ -1,274 +1,270 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { LESSON_CONTENT } from '../data/lessonContent'
 import { CURRICULUM } from '../data/curriculum'
 import { SUBJECTS } from '../data/subjects'
-import { LESSON_CONTENT } from '../data/lessonContent'
 import ContinentsGame from './games/ContinentsGame'
 import EgyptGame from './games/EgyptGame'
+
+const FLIP_COLORS = [
+  { bg: '#FF85A1', dark: '#cc5a74' },
+  { bg: '#FFB347', dark: '#cc8a2e' },
+  { bg: '#87CEEB', dark: '#5aa0bd' },
+  { bg: '#90EE90', dark: '#5ab85a' },
+  { bg: '#DDA0DD', dark: '#aa6eaa' },
+  { bg: '#F4A460', dark: '#c27830' },
+]
+
+function FlipCard({ en, id, index }) {
+  const [flipped, setFlipped] = useState(false)
+  const c = FLIP_COLORS[index % FLIP_COLORS.length]
+
+  return (
+    <div
+      className="cursor-pointer select-none"
+      style={{ perspective: '600px', height: '120px' }}
+      onClick={() => setFlipped((f) => !f)}
+    >
+      <div
+        className="relative w-full h-full transition-transform duration-500"
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+        }}
+      >
+        <div
+          className="absolute inset-0 rounded-chunkier flex flex-col items-center justify-center gap-1"
+          style={{
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            backgroundColor: c.bg,
+            boxShadow: `0 4px 0 ${c.dark}`,
+          }}
+        >
+          <span className="font-display text-2xl text-white">{en}</span>
+          <span className="text-xs text-white opacity-80 font-bold">tap to flip</span>
+        </div>
+        <div
+          className="absolute inset-0 rounded-chunkier flex flex-col items-center justify-center gap-1"
+          style={{
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+            backgroundColor: '#fff',
+            border: `3px solid ${c.bg}`,
+            boxShadow: `0 4px 0 ${c.dark}`,
+          }}
+        >
+          <span className="text-xs font-bold uppercase tracking-wider" style={{ color: c.bg }}>
+            Bahasa Indonesia
+          </span>
+          <span className="font-display text-2xl text-gray-800">{id}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ComingSoonGame({ gameType }) {
+  return (
+    <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
+      <div className="text-6xl">🎮</div>
+      <h3 className="font-display text-2xl text-gray-700">Game Segera Hadir!</h3>
+      <p className="text-gray-500 font-bold">
+        Game <span className="text-primary">"{gameType}"</span> sedang dibuat.
+        <br />
+        Pantau terus ya, Olivia!
+      </p>
+      <div className="text-4xl animate-bounce-slow">🚀</div>
+    </div>
+  )
+}
 
 export default function LessonPage() {
   const { week } = useParams()
   const navigate = useNavigate()
-  const weekNum = Number(week)
-  const [tab, setTab] = useState('story')
+  const [activeTab, setActiveTab] = useState('story')
 
-  const lesson = CURRICULUM.find((c) => c.week === weekNum)
+  const weekNum = Number(week)
   const content = LESSON_CONTENT[weekNum]
+  const lesson = CURRICULUM.find((l) => l.week === weekNum)
   const subject = lesson ? SUBJECTS[lesson.subject] : null
 
-  if (!lesson) {
+  if (!lesson || !subject) {
     return (
-      <div className="min-h-screen bg-cream p-6 flex flex-col items-center justify-center">
-        <div className="text-6xl mb-4">😅</div>
-        <p className="font-bold text-gray-600 mb-6">No lesson found for week {week}.</p>
-        <button onClick={() => navigate('/olivia')} className="press-btn bg-primary text-white px-6 py-3 rounded-chunky font-bold">
-          ← Back to map
+      <div className="min-h-screen bg-cream flex flex-col items-center justify-center gap-4">
+        <div className="text-6xl">📚</div>
+        <h2 className="font-display text-2xl text-primary">Lesson not found!</h2>
+        <button onClick={() => navigate('/')} className="press-btn bg-primary text-white px-6 py-3 rounded-chunky font-bold">
+          Back to Home
         </button>
       </div>
     )
   }
 
-  return (
-    <div className="min-h-screen bg-cream p-4 sm:p-6">
-      <div className="max-w-3xl mx-auto">
-        <Header lesson={lesson} subject={subject} onBack={() => navigate(-1)} />
+  const tabs = [
+    { key: 'story', label: 'Story',  emoji: '📖' },
+    { key: 'learn', label: 'Learn',  emoji: '🃏' },
+    { key: 'play',  label: 'Play',   emoji: '🎮' },
+    { key: 'print', label: 'Print',  emoji: '🖨️' },
+  ]
 
-        <div className="flex gap-2 mb-6 bg-white p-2 rounded-chunky overflow-x-auto">
-          <TabBtn active={tab === 'story'} onClick={() => setTab('story')}>📖 Story</TabBtn>
-          <TabBtn active={tab === 'learn'} onClick={() => setTab('learn')}>🔤 Learn</TabBtn>
-          <TabBtn active={tab === 'play'} onClick={() => setTab('play')}>🎮 Play</TabBtn>
-          <TabBtn active={tab === 'print'} onClick={() => setTab('print')}>🖨️ Print</TabBtn>
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: '#FFF5F8' }}>
+      {/* Header */}
+      <div className="px-4 pt-6 pb-4" style={{ backgroundColor: subject.bg }}>
+        <button
+          onClick={() => navigate(-1)}
+          className="press-btn flex items-center gap-1 text-sm font-bold mb-4 rounded-chunky px-3 py-1.5"
+          style={{ color: subject.color, backgroundColor: 'rgba(255,255,255,0.6)' }}
+        >
+          ← Back
+        </button>
+
+        <div className="flex items-start gap-3">
+          <div
+            className="w-14 h-14 rounded-chunky flex items-center justify-center text-3xl flex-shrink-0"
+            style={{ backgroundColor: subject.color + '22' }}
+          >
+            {subject.emoji}
+          </div>
+          <div>
+            <div className="text-xs font-display uppercase tracking-widest mb-0.5" style={{ color: subject.color }}>
+              Week {weekNum} · {subject.name}
+            </div>
+            <h1 className="font-display text-2xl text-gray-800 leading-tight">{lesson.topic}</h1>
+          </div>
         </div>
 
-        {!content ? (
-          <ContentComingSoon subject={subject} />
-        ) : (
-          <>
-            {tab === 'story' && <StoryTab content={content} subject={subject} />}
-            {tab === 'learn' && <LearnTab content={content} subject={subject} />}
-            {tab === 'play' && <PlayTab content={content} subject={subject} />}
-            {tab === 'print' && <PrintTab content={content} lesson={lesson} subject={subject} />}
-          </>
+        {/* Tab bar */}
+        <div className="flex gap-2 mt-5 overflow-x-auto pb-1">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`press-btn flex items-center gap-1.5 px-4 py-2.5 rounded-chunky font-display text-sm whitespace-nowrap flex-shrink-0 transition-all ${
+                activeTab === tab.key ? 'text-white' : 'text-gray-500 bg-white/70'
+              }`}
+              style={
+                activeTab === tab.key
+                  ? { backgroundColor: subject.color, boxShadow: `0 3px 0 ${subject.color}99` }
+                  : {}
+              }
+            >
+              <span>{tab.emoji}</span>
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="px-4 py-5 max-w-2xl mx-auto">
+
+        {/* STORY */}
+        {activeTab === 'story' && (
+          <div className="flex flex-col gap-4">
+            <div className="rounded-chunkier p-5 bg-white border border-pink-100" style={{ boxShadow: '0 2px 0 #ffd6e7' }}>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-2xl">📖</span>
+                <span className="text-xs font-display text-primary-dark uppercase tracking-wider">Cerita Pembuka</span>
+              </div>
+              <p className="text-gray-700 text-base leading-relaxed font-bold italic">
+                "{content.story}"
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-xl">💡</span>
+              <h3 className="font-display text-lg text-gray-700">Yang Kita Pelajari</h3>
+            </div>
+            <div className="flex flex-col gap-3">
+              {content.teaching.map((point, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-3 rounded-chunky px-4 py-3 bg-white border border-pink-50"
+                  style={{ boxShadow: '0 2px 0 #ffd6e7' }}
+                >
+                  <div
+                    className="w-7 h-7 rounded-chunky flex items-center justify-center text-white text-sm font-display flex-shrink-0 mt-0.5"
+                    style={{ backgroundColor: subject.color }}
+                  >
+                    {i + 1}
+                  </div>
+                  <p className="text-gray-700 font-bold text-sm leading-relaxed">{point}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-chunkier p-5 mt-2 border-2" style={{ backgroundColor: '#FFF9E6', borderColor: '#FFD700' }}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">✏️</span>
+                <span className="text-xs font-display text-yellow-600 uppercase tracking-wider">Aktivitas Hari Ini</span>
+              </div>
+              <p className="text-gray-700 font-bold text-sm leading-relaxed">{content.activity}</p>
+            </div>
+          </div>
+        )}
+
+        {/* LEARN */}
+        {activeTab === 'learn' && (
+          <div className="flex flex-col gap-4">
+            <div className="text-center mb-2">
+              <h3 className="font-display text-xl text-gray-700">Vocab Flip Cards</h3>
+              <p className="text-sm text-gray-400 font-bold">Tap each card to see in Bahasa Indonesia!</p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {content.vocab.map((v, i) => (
+                <FlipCard key={v.en} en={v.en} id={v.id} index={i} />
+              ))}
+            </div>
+            <p className="text-center text-xs text-gray-400 mt-2 font-bold">
+              {content.vocab.length} kata baru minggu ini
+            </p>
+          </div>
+        )}
+
+        {/* PLAY */}
+        {activeTab === 'play' && (
+          <div className="rounded-chunkier bg-white border border-pink-100 p-4" style={{ boxShadow: '0 2px 0 #ffd6e7' }}>
+            {content.game_type === 'continents' ? (
+              <ContinentsGame subject={subject} />
+            ) : content.game_type === 'egypt' ? (
+              <EgyptGame />
+            ) : (
+              <ComingSoonGame gameType={content.game_type} />
+            )}
+          </div>
+        )}
+
+        {/* PRINT */}
+        {activeTab === 'print' && (
+          <div className="flex flex-col items-center gap-6 py-6">
+            <div className="w-24 h-24 rounded-chunkier bg-pink-50 flex items-center justify-center text-5xl">
+              🖨️
+            </div>
+            <div className="text-center">
+              <h3 className="font-display text-2xl text-gray-700 mb-1">Worksheet Week {weekNum}</h3>
+              <p className="text-gray-500 font-bold text-sm mb-0.5">{lesson.topic}</p>
+              <p className="text-gray-400 text-xs">Month {lesson.month} worksheet PDF</p>
+            </div>
+            <a
+              href={content.worksheet_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press-btn flex items-center gap-3 px-8 py-4 rounded-chunkier font-display text-white text-xl"
+              style={{ backgroundColor: '#FF85A1', boxShadow: '0 4px 0 #cc5a74' }}
+            >
+              <span>📥</span>
+              Download Worksheet
+            </a>
+            <div className="rounded-chunkier bg-pink-50 border border-pink-100 px-5 py-4 max-w-xs text-center">
+              <p className="text-xs font-display text-primary-dark mb-1">AKTIVITAS</p>
+              <p className="text-gray-600 text-sm font-bold">{content.activity}</p>
+            </div>
+          </div>
         )}
       </div>
-    </div>
-  )
-}
-
-function Header({ lesson, subject, onBack }) {
-  return (
-    <div className="mb-6">
-      <button onClick={onBack} className="press-btn bg-white px-4 py-2 rounded-chunky text-primary-dark font-bold mb-4">
-        ← Back
-      </button>
-      <div
-        className="rounded-chunkier p-5"
-        style={{
-          background: subject.bg,
-          border: `3px solid ${subject.color}`,
-          boxShadow: `0 4px 0 0 ${subject.color}`,
-        }}
-      >
-        <div className="flex items-center gap-3">
-          <span className="text-4xl">{subject.emoji}</span>
-          <div>
-            <div className="text-xs font-bold opacity-70" style={{ color: subject.color }}>
-              Week {lesson.week} · Month {lesson.month} · {subject.name}
-            </div>
-            <h2 className="font-display text-2xl leading-tight mt-1" style={{ color: subject.color }}>
-              {lesson.topic}
-            </h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function TabBtn({ active, onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex-1 py-3 px-3 rounded-chunky font-bold transition text-sm whitespace-nowrap ${
-        active ? 'bg-primary text-white' : 'text-gray-500 hover:bg-primary-soft'
-      }`}
-    >
-      {children}
-    </button>
-  )
-}
-
-function ContentComingSoon({ subject }) {
-  return (
-    <div className="bg-white rounded-chunkier p-8 text-center">
-      <div className="text-6xl mb-3">🚧</div>
-      <p className="font-display text-2xl mb-2" style={{ color: subject.color }}>
-        Lesson content coming soon
-      </p>
-      <p className="text-gray-500">Papa is still preparing this week's story and games!</p>
-    </div>
-  )
-}
-
-function StoryTab({ content, subject }) {
-  return (
-    <div className="space-y-6">
-      <div
-        className="rounded-chunkier p-6"
-        style={{ background: '#FFE5EE', border: '3px solid #FF85A1' }}
-      >
-        <div className="text-xs font-bold text-primary-dark uppercase tracking-wide mb-3">
-          📖 Papa reads this out loud
-        </div>
-        <p className="font-display text-xl sm:text-2xl italic leading-relaxed text-gray-700">
-          "{content.story}"
-        </p>
-      </div>
-
-      <div>
-        <h3 className="font-display text-xl text-primary-dark mb-3">What we'll learn</h3>
-        <ol className="space-y-2">
-          {content.teaching.map((t, i) => (
-            <li
-              key={i}
-              className="rounded-chunky p-4 flex gap-3 items-start"
-              style={{ background: subject.bg, border: `2px solid ${subject.color}` }}
-            >
-              <span
-                className="font-display text-lg shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white"
-                style={{ background: subject.color }}
-              >
-                {i + 1}
-              </span>
-              <span className="font-bold pt-1" style={{ color: subject.color }}>
-                {t}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </div>
-
-      {content.activity && (
-        <div className="bg-white rounded-chunkier p-5">
-          <h3 className="font-display text-xl text-primary-dark mb-2">🎨 Today's activity</h3>
-          <p className="text-gray-700 leading-relaxed">{content.activity}</p>
-        </div>
-      )}
-    </div>
-  )
-}
-
-function LearnTab({ content, subject }) {
-  return (
-    <div>
-      <p className="text-center text-gray-500 mb-4 font-bold">Tap a card to flip it! 🔄</p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-        {content.vocab.map((v, i) => (
-          <FlipCard key={i} en={v.en} id={v.id} subject={subject} />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function FlipCard({ en, id, subject }) {
-  const [flipped, setFlipped] = useState(false)
-  return (
-    <button
-      onClick={() => setFlipped((f) => !f)}
-      className="flip-card press-btn rounded-chunkier h-32 sm:h-36 relative"
-      style={{ perspective: '800px' }}
-    >
-      <div
-        className="absolute inset-0 transition-transform duration-500"
-        style={{
-          transformStyle: 'preserve-3d',
-          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0)',
-        }}
-      >
-        <div
-          className="absolute inset-0 rounded-chunkier flex flex-col items-center justify-center p-3"
-          style={{
-            background: '#fff',
-            border: `3px solid ${subject.color}`,
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-          }}
-        >
-          <div className="text-xs font-bold uppercase opacity-50" style={{ color: subject.color }}>
-            English
-          </div>
-          <div className="font-display text-2xl mt-1" style={{ color: subject.color }}>
-            {en}
-          </div>
-        </div>
-        <div
-          className="absolute inset-0 rounded-chunkier flex flex-col items-center justify-center p-3"
-          style={{
-            background: subject.color,
-            color: '#fff',
-            transform: 'rotateY(180deg)',
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-          }}
-        >
-          <div className="text-xs font-bold uppercase opacity-80">Bahasa</div>
-          <div className="font-display text-2xl mt-1 text-center leading-tight">{id}</div>
-        </div>
-      </div>
-    </button>
-  )
-}
-
-function PlayTab({ content, subject }) {
-  if (content.game_type === 'continents') {
-    return <ContinentsGame subject={subject} />
-  }
-  if (content.game_type === 'egypt') {
-    return <EgyptGame />
-  }
-  return (
-    <div className="bg-white rounded-chunkier p-8 text-center">
-      <div className="text-6xl mb-3">🚀</div>
-      <p className="font-display text-2xl mb-2" style={{ color: subject.color }}>
-        Coming soon!
-      </p>
-      <p className="text-gray-500 font-bold">
-        Game type: <span style={{ color: subject.color }}>{content.game_type}</span>
-      </p>
-      <p className="text-gray-500 mt-2 text-sm">A fun mini-game for this lesson is on the way.</p>
-    </div>
-  )
-}
-
-function PrintTab({ content, lesson, subject }) {
-  if (!content.worksheet_url) {
-    return (
-      <div className="bg-white rounded-chunkier p-8 text-center">
-        <div className="text-6xl mb-3">📄</div>
-        <p className="font-bold text-gray-500">Worksheet coming soon for this lesson.</p>
-      </div>
-    )
-  }
-  return (
-    <div className="bg-white rounded-chunkier p-6 text-center space-y-4">
-      <div className="text-6xl">📄</div>
-      <h3 className="font-display text-2xl" style={{ color: subject.color }}>
-        This week's worksheet
-      </h3>
-      <p className="text-gray-500">
-        Month {lesson.month} · Week {lesson.week} · {subject.name}
-      </p>
-      <a
-        href={content.worksheet_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="press-btn inline-block font-display text-xl text-white py-4 px-8 rounded-chunky"
-        style={{ background: subject.color, boxShadow: `0 5px 0 0 ${subject.color}99` }}
-      >
-        🖨️ Download worksheet
-      </a>
-      <p className="text-xs text-gray-400 pt-2">Opens in a new tab — print on A4.</p>
     </div>
   )
 }
