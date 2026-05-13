@@ -14,9 +14,9 @@ const CHAPTERS = [
     title: 'The River That Gave Life — The Nile',
     emoji: '🌊',
     kind: 'image',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Nile_River_Delta_from_orbit.jpg/800px-Nile_River_Delta_from_orbit.jpg',
-    imgAlt: 'The Nile River Delta from space — the green stripe of life through the desert',
-    imgCaption: 'NASA photo: The Nile glowing green through the tan desert',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Nile_3rd_Cataract_Left.jpg/330px-Nile_3rd_Cataract_Left.jpg',
+    imgAlt: 'The Nile River flowing through the desert',
+    imgCaption: 'The Nile River — a green stripe of life cutting through the desert',
     body: "Without the Nile River, Egypt would just be empty desert. Every year the Nile flooded, leaving behind rich black soil. Farmers planted wheat and vegetables in that soil, and the whole civilization was fed! The ancient Egyptians called this black soil 'kemet' — the black land — and they loved it.",
     fact: 'The Nile is the longest river in the world — 6,650 km! It flows north through the entire country.',
   },
@@ -24,62 +24,69 @@ const CHAPTERS = [
     id: 'pharaoh',
     title: 'The Pharaohs — Kings Like Gods',
     emoji: '👑',
-    kind: 'illustrated',
-    body: "The rulers of Ancient Egypt were called Pharaohs. People believed the pharaoh was a god on Earth — the son of Ra, the sun god! The pharaoh wore a special double crown, a striped headdress called a nemes, and carried a crook and flail (two royal symbols). The most famous pharaohs include Ramesses the Great, Queen Hatshepsut, and the boy king Tutankhamun — who was only 9 years old when he became pharaoh!",
-    fact: 'Queen Hatshepsut ruled Egypt for over 20 years. She was one of history\'s most powerful female rulers!',
-    decoration: ['𓂀', '𓆣', '𓅃'],
+    kind: 'image',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CairoEgMuseumTaaMaskMostlyPhotographed.jpg/330px-CairoEgMuseumTaaMaskMostlyPhotographed.jpg',
+    imgAlt: "The golden mask of Tutankhamun in the Cairo Egyptian Museum",
+    imgCaption: "Tutankhamun's solid gold mask — the most photographed object in the world",
+    body: "The rulers of Ancient Egypt were called Pharaohs. People believed the pharaoh was a god on Earth — the son of Ra, the sun god! They wore special crowns and carried a crook and flail as royal symbols. The most famous pharaoh is Tutankhamun — the 'boy king' who became pharaoh at just 9 years old! Queen Hatshepsut was one of history's most powerful female rulers.",
+    fact: "When Tutankhamun's tomb was discovered in 1922, his golden mask was still perfectly in place — after 3,300 years!",
   },
   {
     id: 'pyramids',
     title: 'The Great Pyramids of Giza',
     emoji: '🔺',
     kind: 'image',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/1200px-Kheops-Pyramid.jpg',
-    imgAlt: 'The Great Pyramid of Khufu at Giza',
-    imgCaption: 'The Great Pyramid of Khufu — built 4,500 years ago',
-    body: "The pyramids are the most famous buildings ever built. The Great Pyramid of Giza used over 2 million stone blocks — each one as heavy as a car! About 20,000 workers built it over 20 years. They used ramps, sledges, and water to slide the blocks into place. The pyramid was so perfectly built that you can barely fit a piece of paper between the stones!",
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/330px-All_Gizah_Pyramids.jpg',
+    imgAlt: 'All three pyramids at Giza with camels in the foreground',
+    imgCaption: 'The three Great Pyramids of Giza — still standing after 4,500 years',
+    body: "The pyramids are the most famous buildings ever built. The Great Pyramid of Giza used over 2 million stone blocks — each one as heavy as a car! About 20,000 workers built it over 20 years. They used ramps, sledges, and water to slide the massive blocks into place. The pyramid was so perfectly built that you can barely fit a piece of paper between the stones!",
     fact: 'The Great Pyramid was the tallest building on Earth for 3,800 years — until the Eiffel Tower was built in 1889!',
   },
   {
     id: 'hieroglyphics',
     title: 'Writing in Pictures — Hieroglyphics',
     emoji: '📜',
-    kind: 'hieroglyphs',
-    body: "The ancient Egyptians invented one of the world's first writing systems — hieroglyphics! Instead of letters, they used over 700 different picture symbols. Each picture could stand for a sound, a word, or an idea. They wrote on papyrus (an early form of paper made from reeds), carved into stone walls, and painted inside tombs. For thousands of years, nobody could read hieroglyphics — until a French soldier found the Rosetta Stone in 1799!",
+    kind: 'double',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Hieroglyphs_from_the_tomb_of_Seti_I.jpg/330px-Hieroglyphs_from_the_tomb_of_Seti_I.jpg',
+    imgAlt: "Hieroglyphs painted on the wall of Seti I's tomb",
+    imgCaption: "Real hieroglyphs from the tomb of Pharaoh Seti I",
+    img2: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Rosetta_Stone.JPG/330px-Rosetta_Stone.JPG',
+    img2Alt: 'The Rosetta Stone',
+    img2Caption: 'The Rosetta Stone — the key that unlocked hieroglyphics',
+    body: "The ancient Egyptians invented one of the world's first writing systems — hieroglyphics! Instead of letters, they used over 700 different picture symbols. Each picture could stand for a sound, a word, or an idea. They wrote on papyrus (early paper made from reeds) and carved into stone walls. Nobody could read hieroglyphics for thousands of years — until the Rosetta Stone was found in 1799!",
     fact: "The word 'hieroglyphics' comes from Greek, meaning 'sacred carvings.' They were considered the language of the gods.",
-    symbols: [
-      { glyph: '𓅓', name: 'owl = M' },
-      { glyph: '𓆙', name: 'snake = F' },
-      { glyph: '𓂋', name: 'mouth = R' },
-      { glyph: '𓏏', name: 'bread = T' },
-      { glyph: '𓃀', name: 'leg = B' },
-      { glyph: '𓊪', name: 'stool = P' },
-    ],
   },
   {
     id: 'life',
     title: 'Daily Life in Ancient Egypt',
     emoji: '🌾',
-    kind: 'life',
-    body: "Most Egyptians were farmers who grew wheat, barley, and flax along the Nile. Children helped their parents in the fields and learned their parent's trade. They wore light white linen clothing because Egypt is SO hot. Rich families wore gold jewellery and painted their eyes with dark kohl to protect from the bright sun. They played board games, music, and even had pet cats!",
-    fact: 'Ancient Egyptians were among the first people to have pet cats — they even worshipped a cat goddess named Bastet!',
-    clothing: ['👗 White linen robes', '💎 Gold necklaces', '👁️ Kohl eye paint', '🌿 Floral headdresses'],
+    kind: 'image',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Egyptian_harvest.jpg/330px-Egyptian_harvest.jpg',
+    imgAlt: 'Ancient Egyptian painting showing people harvesting crops',
+    imgCaption: 'Ancient Egyptian tomb painting showing farmers harvesting grain',
+    body: "Most Egyptians were farmers who grew wheat, barley, and flax along the Nile. They wore light white linen clothing because Egypt is SO hot. Rich families wore gold jewellery and painted their eyes with dark kohl to protect from the bright sun. Children helped in the fields and learned crafts. They played board games, made music — and had pet cats!",
+    fact: 'Ancient Egyptians were among the first people to keep pet cats — they even worshipped a cat goddess named Bastet!',
   },
   {
     id: 'mummies',
     title: 'Mummies — Sleeping to Live Again',
     emoji: '⚱️',
-    kind: 'mummy',
-    body: "Ancient Egyptians believed that when you die, your soul goes on a magical journey to the afterlife — a beautiful paradise. But your soul needed your body to come back to! So they carefully preserved bodies by removing organs, drying the body with salt, wrapping it in thousands of metres of linen bandages, and placing it in a decorated golden case called a sarcophagus. The whole process took 70 days!",
-    fact: "King Tutankhamun's tomb was found in 1922 — still FULL of treasure! Over 5,000 objects were inside, including a solid gold mask.",
-    steps: ['Remove organs', 'Dry with salt', 'Wrap in bandages', 'Place in sarcophagus', 'Bury in pyramid'],
+    kind: 'double',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Ramses_I_Mummy.jpg/330px-Ramses_I_Mummy.jpg',
+    imgAlt: 'The mummy of Pharaoh Ramses I',
+    imgCaption: 'The mummy of Pharaoh Ramses I — preserved for over 3,000 years',
+    img2: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Ancient_Egyptian_Sarcophagus_lid.jpg/330px-Ancient_Egyptian_Sarcophagus_lid.jpg',
+    img2Alt: 'An ancient Egyptian sarcophagus lid',
+    img2Caption: 'A golden sarcophagus — the decorated coffin that held the mummy',
+    body: "Ancient Egyptians believed that when you die, your soul goes on a magical journey to the afterlife — a beautiful paradise. But your soul needed your body to come back to! So they carefully preserved bodies: removing organs, drying with salt, wrapping in linen bandages, and placing in a decorated golden sarcophagus. The whole process took 70 days!",
+    fact: "Over 5,000 objects were found in Tutankhamun's tomb — including a solid gold mask, chariots, thrones, and even board games!",
   },
 ]
 
 function MapScene() {
   return (
-    <div className="relative w-full rounded-chunky overflow-hidden" style={{ background: '#B3D9F2', height: 220 }}>
-      <svg viewBox="0 0 1000 500" className="w-full" style={{ height: 220, objectFit: 'cover' }}>
+    <div className="relative w-full rounded-chunky overflow-hidden" style={{ background: '#B3D9F2', height: 200 }}>
+      <svg viewBox="0 0 1000 500" className="w-full" style={{ height: 200 }}>
         <rect width="1000" height="500" fill="#B3D9F2" />
         <line x1="0" y1="250" x2="1000" y2="250" stroke="white" strokeWidth="1.5" strokeDasharray="12,10" opacity="0.5" />
         <text x="12" y="253" fill="white" fontSize="11" opacity="0.7" fontFamily="Nunito, sans-serif" fontWeight="bold">Equator</text>
@@ -88,12 +95,12 @@ function MapScene() {
         <text x="512" y="248" textAnchor="middle" fill="white" fontSize="13" fontWeight="800" fontFamily="Nunito, sans-serif">EGYPT</text>
         <polygon points="512,205 520,218 504,218" fill="#FFD700" />
         <path d="M 510,280 L 505,255 L 510,235 L 512,215" stroke="#4FC3F7" strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" />
-        <text x="525" y="268" fill="#4FC3F7" fontSize="9" fontWeight="bold" fontFamily="Nunito, sans-serif">Nile</text>
-        <text x="480" y="200" fill="white" fontSize="9" fontFamily="Nunito, sans-serif" opacity="0.9">Mediterranean Sea</text>
+        <text x="526" y="270" fill="#4FC3F7" fontSize="10" fontWeight="bold" fontFamily="Nunito, sans-serif">Nile</text>
+        <text x="470" y="202" fill="white" fontSize="9" fontFamily="Nunito, sans-serif" opacity="0.9">Mediterranean Sea</text>
         <path d="M 448,72 L 486,64 L 518,72 L 542,86 L 550,108 L 532,128 L 552,150 L 534,176 L 510,200 L 478,214 L 450,210 L 424,193 L 416,170 L 420,136 L 435,108 Z" fill="#87CEEB88" stroke="#aaa" strokeWidth="1.5" />
-        <text x="480" y="160" textAnchor="middle" fill="#555" fontSize="10" fontFamily="Nunito, sans-serif">Europe</text>
+        <text x="480" y="155" textAnchor="middle" fill="white" fontSize="10" fontFamily="Nunito, sans-serif" fontWeight="bold">Europe</text>
         <path d="M 560,130 L 640,100 L 750,100 L 820,140 L 800,200 L 720,230 L 640,230 L 580,210 L 555,180 Z" fill="#FF85A188" stroke="#aaa" strokeWidth="1.5" />
-        <text x="680" y="175" textAnchor="middle" fill="#555" fontSize="10" fontFamily="Nunito, sans-serif">Asia</text>
+        <text x="680" y="172" textAnchor="middle" fill="white" fontSize="10" fontFamily="Nunito, sans-serif" fontWeight="bold">Asia</text>
       </svg>
       <div className="absolute bottom-2 right-2 flex gap-1.5">
         <div className="flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-bold" style={{ backgroundColor: '#cc000099', color: 'white' }}>🔴 Egypt</div>
@@ -103,90 +110,59 @@ function MapScene() {
   )
 }
 
-function ImageScene({ img, imgAlt, imgCaption }) {
+function ImgCard({ src, alt, caption }) {
+  const [loaded, setLoaded] = useState(false)
+  const [errored, setErrored] = useState(false)
+
+  if (errored) {
+    return (
+      <div className="w-full rounded-chunky flex items-center justify-center text-gray-400 text-sm font-bold"
+        style={{ height: 200, background: '#f3f4f6', border: '2px dashed #d1d5db' }}>
+        📷 Image unavailable
+      </div>
+    )
+  }
+
   return (
-    <div className="relative w-full rounded-chunky overflow-hidden" style={{ height: 220 }}>
-      <img src={img} alt={imgAlt} className="w-full h-full object-cover" style={{ height: 220 }} onError={e => { e.target.style.display = 'none' }} />
-      <div className="absolute bottom-0 left-0 right-0 px-3 py-1.5" style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.65))' }}>
-        <p className="text-white text-xs font-bold">{imgCaption}</p>
+    <div className="relative w-full rounded-chunky overflow-hidden" style={{ height: 200 }}>
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center" style={{ background: '#fef3c7' }}>
+          <div className="w-8 h-8 rounded-full border-4 border-yellow-400 border-t-transparent animate-spin" />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover transition-opacity duration-300"
+        style={{ height: 200, opacity: loaded ? 1 : 0 }}
+        onLoad={() => setLoaded(true)}
+        onError={() => setErrored(true)}
+      />
+      <div className="absolute bottom-0 left-0 right-0 px-3 py-1.5"
+        style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.7))' }}>
+        <p className="text-white text-xs font-bold">{caption}</p>
       </div>
     </div>
   )
 }
 
-function HieroglyphsScene({ symbols }) {
+function DoubleImageScene({ img, imgAlt, imgCaption, img2, img2Alt, img2Caption }) {
   return (
-    <div className="relative w-full rounded-chunky overflow-hidden p-4" style={{ height: 220, background: 'linear-gradient(160deg, #8B6914, #c8a84b, #e8c96b)' }}>
-      <div className="text-center mb-2">
-        <span className="text-xs font-bold text-yellow-900 uppercase tracking-widest">Some Real Hieroglyphs!</span>
-      </div>
-      <div className="grid grid-cols-3 gap-2">
-        {symbols.map(s => (
-          <div key={s.name} className="flex flex-col items-center gap-0.5 rounded-xl py-2" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}>
-            <span className="text-3xl">{s.glyph}</span>
-            <span className="text-xs font-bold text-yellow-900 text-center leading-tight">{s.name}</span>
-          </div>
-        ))}
-      </div>
-      <div className="text-center mt-2 text-xs text-yellow-900 font-bold opacity-80">𓀀 𓀁 𓀂 𓀃 𓀄 𓀅 𓀆 𓀇 𓀈 𓀉 𓀊 𓀋</div>
+    <div className="grid grid-cols-2 gap-2">
+      <ImgCard src={img} alt={imgAlt} caption={imgCaption} />
+      <ImgCard src={img2} alt={img2Alt} caption={img2Caption} />
     </div>
   )
 }
 
-function LifeScene({ clothing }) {
-  return (
-    <div className="relative w-full rounded-chunky overflow-hidden p-4" style={{ height: 220, background: 'linear-gradient(160deg, #c8860b, #e8b84b, #f5d57a)' }}>
-      <div className="text-center mb-3">
-        <p className="text-xs font-bold text-yellow-900 uppercase tracking-widest">What Egyptians Wore</p>
-      </div>
-      <div className="grid grid-cols-2 gap-2">
-        {clothing.map(item => (
-          <div key={item} className="flex items-center gap-2 rounded-xl px-3 py-2" style={{ backgroundColor: 'rgba(255,255,255,0.35)' }}>
-            <span className="text-lg">{item.split(' ')[0]}</span>
-            <span className="text-xs font-bold text-yellow-900 leading-tight">{item.split(' ').slice(1).join(' ')}</span>
-          </div>
-        ))}
-      </div>
-      <div className="mt-3 text-center">
-        <span className="text-2xl">🐱</span>
-        <span className="text-xs font-bold text-yellow-900 ml-2">They kept pet cats — sacred animals!</span>
-      </div>
-    </div>
+function ChapterScene({ chapter }) {
+  if (chapter.kind === 'map') return <MapScene />
+  if (chapter.kind === 'image') return <ImgCard src={chapter.img} alt={chapter.imgAlt} caption={chapter.imgCaption} />
+  if (chapter.kind === 'double') return (
+    <DoubleImageScene img={chapter.img} imgAlt={chapter.imgAlt} imgCaption={chapter.imgCaption}
+      img2={chapter.img2} img2Alt={chapter.img2Alt} img2Caption={chapter.img2Caption} />
   )
-}
-
-function MummyScene({ steps }) {
-  return (
-    <div className="relative w-full rounded-chunky overflow-hidden p-4" style={{ height: 220, background: 'linear-gradient(160deg, #2c1a6e, #4a2a8a, #6b3fa0)' }}>
-      <div className="text-center mb-2">
-        <p className="text-xs font-bold text-purple-200 uppercase tracking-widest">How to Make a Mummy</p>
-      </div>
-      <div className="flex flex-col gap-1.5">
-        {steps.map((step, i) => (
-          <div key={step} className="flex items-center gap-2 rounded-xl px-3 py-1.5" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
-            <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style={{ backgroundColor: '#FFD700', color: '#2c1a6e' }}>{i + 1}</div>
-            <span className="text-sm font-bold text-white">{step}</span>
-          </div>
-        ))}
-      </div>
-      <div className="absolute top-3 right-3 text-3xl">⚱️</div>
-    </div>
-  )
-}
-
-function PharaohScene({ decoration }) {
-  return (
-    <div className="relative w-full rounded-chunky overflow-hidden flex flex-col items-center justify-center gap-3"
-      style={{ height: 220, background: 'linear-gradient(160deg, #b8860b, #daa520, #ffd700, #c8860b)' }}>
-      <div className="flex gap-4 text-4xl">{decoration.map(d => <span key={d}>{d}</span>)}</div>
-      <div className="text-center px-4">
-        <div className="text-6xl mb-1">👑</div>
-        <p className="text-yellow-900 font-bold text-sm">Pharaoh — Son of Ra, the Sun God</p>
-      </div>
-      <div className="flex gap-4 text-2xl opacity-70">{[...decoration].reverse().map(d => <span key={d + 'r'}>{d}</span>)}</div>
-      <div className="absolute inset-0 pointer-events-none" style={{ border: '8px solid rgba(255,215,0,0.4)', borderRadius: 16, margin: 4 }} />
-    </div>
-  )
+  return null
 }
 
 export default function EgyptStory() {
@@ -195,11 +171,9 @@ export default function EgyptStory() {
   const total = CHAPTERS.length
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3" style={{ fontFamily: 'Nunito, sans-serif' }}>
       <div className="text-center">
-        <h3 className="text-lg font-extrabold mb-0.5" style={{ color: '#b8860b', fontFamily: 'Nunito, sans-serif' }}>
-          Ancient Egypt: A Picture Story
-        </h3>
+        <h3 className="text-lg font-extrabold mb-0.5" style={{ color: '#b8860b' }}>Ancient Egypt: A Picture Story</h3>
         <p className="text-xs text-gray-400 font-bold">Chapter {page + 1} of {total}</p>
       </div>
 
@@ -210,16 +184,9 @@ export default function EgyptStory() {
         ))}
       </div>
 
-      <div>
-        {chapter.kind === 'map'         && <MapScene />}
-        {chapter.kind === 'image'       && <ImageScene img={chapter.img} imgAlt={chapter.imgAlt} imgCaption={chapter.imgCaption} />}
-        {chapter.kind === 'hieroglyphs' && <HieroglyphsScene symbols={chapter.symbols} />}
-        {chapter.kind === 'life'        && <LifeScene clothing={chapter.clothing} />}
-        {chapter.kind === 'mummy'       && <MummyScene steps={chapter.steps} />}
-        {chapter.kind === 'illustrated' && <PharaohScene decoration={chapter.decoration} />}
-      </div>
+      <ChapterScene chapter={chapter} />
 
-      <div className="rounded-2xl p-4 bg-white border border-yellow-100" style={{ boxShadow: '0 2px 0 #f0d080', fontFamily: 'Nunito, sans-serif' }}>
+      <div className="rounded-2xl p-4 bg-white border border-yellow-100" style={{ boxShadow: '0 2px 0 #f0d080' }}>
         <div className="flex items-center gap-2 mb-2">
           <span className="text-2xl">{chapter.emoji}</span>
           <h4 className="font-extrabold text-gray-800 text-base leading-tight">{chapter.title}</h4>
