@@ -4,6 +4,7 @@ import { CURRICULUM } from '../data/curriculum'
 import { SUBJECTS } from '../data/subjects'
 import { LESSON_CONTENT } from '../data/lessonContent'
 import ContinentsGame from './games/ContinentsGame'
+import EgyptGame from './games/EgyptGame'
 
 export default function LessonPage() {
   const { week } = useParams()
@@ -222,6 +223,9 @@ function FlipCard({ en, id, subject }) {
 function PlayTab({ content, subject }) {
   if (content.game_type === 'continents') {
     return <ContinentsGame subject={subject} />
+  }
+  if (content.game_type === 'egypt') {
+    return <EgyptGame />
   }
   return (
     <div className="bg-white rounded-chunkier p-8 text-center">
