@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    font-family: 'Nunito', system-ui, sans-serif;
+    background: #FFF6FA;
+    color: #3a2a32;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: 'Fredoka One', cursive;
+  }
+}
+
+@layer components {
+  .press-btn {
+    transition: transform 75ms ease, box-shadow 75ms ease;
+    user-select: none;
+    box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.12);
+  }
+  .press-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.12);
+  }
+}
+
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 1.8s ease-in-out infinite;
+}

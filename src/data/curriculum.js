@@ -1,0 +1,16 @@
+export const CURRICULUM = [
+  { week: 1, month: 1, subject: 'geo',  topic: 'Where do we live?' },
+  { week: 2, month: 1, subject: 'hist', topic: 'Ancient Egypt' },
+  { week: 3, month: 1, subject: 'sci',  topic: 'My amazing body' },
+  { week: 4, month: 1, subject: 'math', topic: 'Numbers everywhere' },
+  { week: 5, month: 1, subject: 'soc',  topic: 'Rules — why we have them' },
+  { week: 6, month: 1, subject: 'art',  topic: "Batik — Indonesia's art" },
+  { week: 7, month: 1, subject: 'life', topic: 'My feelings' },
+  { week: 8, month: 2, subject: 'geo',  topic: 'Africa — the wild continent' },
+  { week: 9, month: 2, subject: 'hist', topic: 'Ancient China — inventions' },
+  { week: 10, month: 2, subject: 'sci', topic: 'How plants eat sunlight' },
+  { week: 11, month: 2, subject: 'math', topic: 'Addition — putting things together' },
+  { week: 12, month: 2, subject: 'soc', topic: 'Families around the world' },
+  { week: 13, month: 2, subject: 'art', topic: 'Music of Indonesia' },
+  { week: 14, month: 2, subject: 'life', topic: 'Money and saving' },
+]
