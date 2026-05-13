@@ -1,10 +1,14 @@
+import { useNavigate } from 'react-router-dom'
 import { SUBJECTS, SUBJECT_KEYS } from '../data/subjects'
 import { supabase } from '../lib/supabase'
 
 const TARGET_PER_SUBJECT = 7
 
 export default function Progress({ lessons, loading, onChanged }) {
-  async function remove(id) {
+  const navigate = useNavigate()
+
+  async function remove(e, id) {
+    e.stopPropagation()
     if (!confirm('Delete this lesson?')) return
     const { error } = await supabase.from('lessons').delete().eq('id', id)
     if (error) {
@@ -63,20 +67,21 @@ export default function Progress({ lessons, loading, onChanged }) {
               return (
                 <li
                   key={l.id}
-                  className="flex items-center justify-between p-3 rounded-chunky"
+                  onClick={() => navigate(`/lesson/${l.week}`)}
+                  className="press-btn flex items-center justify-between p-3 rounded-chunky cursor-pointer"
                   style={{ background: s.bg }}
                 >
                   <div className="min-w-0">
                     <div className="font-bold truncate" style={{ color: s.color }}>
-                      {s.emoji} {l.topic}
+                      {s.emoji} {l.topic} →
                     </div>
                     <div className="text-xs text-gray-500">
                       Week {l.week} · {l.mood ?? ''} {'⭐'.repeat(l.stars || 0)}
                     </div>
                   </div>
                   <button
-                    onClick={() => remove(l.id)}
-                    className="press-btn ml-3 bg-white text-red-500 font-bold px-3 py-2 rounded-chunky text-sm"
+                    onClick={(e) => remove(e, l.id)}
+                    className="ml-3 bg-white text-red-500 font-bold px-3 py-2 rounded-chunky text-sm"
                   >
                     Delete
                   </button>

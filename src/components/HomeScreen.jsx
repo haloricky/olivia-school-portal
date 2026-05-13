@@ -1,4 +1,8 @@
-export default function HomeScreen({ onChoose }) {
+import { useNavigate } from 'react-router-dom'
+
+export default function HomeScreen() {
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-cream">
       <h1 className="font-display text-5xl text-primary mb-2 text-center">
@@ -8,7 +12,7 @@ export default function HomeScreen({ onChoose }) {
 
       <div className="flex flex-col sm:flex-row gap-6 w-full max-w-2xl">
         <button
-          onClick={() => onChoose('papa')}
+          onClick={() => navigate('/papa')}
           className="press-btn flex-1 bg-white border-4 border-primary rounded-chunkier py-12 px-6 flex flex-col items-center"
         >
           <span className="text-7xl mb-3">👨</span>
@@ -17,7 +21,7 @@ export default function HomeScreen({ onChoose }) {
         </button>
 
         <button
-          onClick={() => onChoose('olivia')}
+          onClick={() => navigate('/olivia')}
           className="press-btn flex-1 bg-primary text-white rounded-chunkier py-12 px-6 flex flex-col items-center"
           style={{ boxShadow: '0 6px 0 0 #B84A6A' }}
         >

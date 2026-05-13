@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { SUBJECTS, SUBJECT_KEYS } from '../data/subjects'
+import { CURRICULUM } from '../data/curriculum'
 
 const TARGET = 7
 
 export default function MapTab({ lessons }) {
   const [open, setOpen] = useState(null)
+  const navigate = useNavigate()
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -14,11 +17,17 @@ export default function MapTab({ lessons }) {
         const done = subjectLessons.length
         const isOpen = open === key
         const pct = Math.min(100, (done / TARGET) * 100)
+
+        const loggedKeys = new Set(subjectLessons.map((l) => `${l.subject}::${l.topic}`))
+        const nextLesson = CURRICULUM.find(
+          (c) => c.subject === key && !loggedKeys.has(`${c.subject}::${c.topic}`)
+        )
+
         return (
-          <button
+          <div
             key={key}
             onClick={() => setOpen(isOpen ? null : key)}
-            className="press-btn rounded-chunkier p-5 text-left col-span-2 sm:col-span-1"
+            className="press-btn rounded-chunkier p-5 text-left cursor-pointer col-span-2 sm:col-span-1"
             style={{
               background: s.bg,
               border: `3px solid ${s.color}`,
@@ -39,7 +48,7 @@ export default function MapTab({ lessons }) {
             </div>
 
             {isOpen && (
-              <div className="mt-4 space-y-2">
+              <div className="mt-4 space-y-2" onClick={(e) => e.stopPropagation()}>
                 {subjectLessons.length === 0 ? (
                   <div className="text-sm text-gray-500">No lessons yet.</div>
                 ) : (
@@ -47,18 +56,29 @@ export default function MapTab({ lessons }) {
                     .slice()
                     .sort((a, b) => a.week - b.week)
                     .map((l) => (
-                      <div
+                      <button
                         key={l.id}
-                        className="bg-white/70 rounded-chunky px-3 py-2 text-sm font-bold"
+                        onClick={() => navigate(`/lesson/${l.week}`)}
+                        className="press-btn block w-full bg-white/80 rounded-chunky px-3 py-2 text-sm font-bold text-left"
                         style={{ color: s.color }}
                       >
-                        W{l.week} · {l.topic}
-                      </div>
+                        W{l.week} · {l.topic} →
+                      </button>
                     ))
+                )}
+
+                {nextLesson && (
+                  <button
+                    onClick={() => navigate(`/lesson/${nextLesson.week}`)}
+                    className="press-btn block w-full mt-3 rounded-chunky px-3 py-3 font-display text-white text-center text-sm"
+                    style={{ background: s.color, boxShadow: `0 4px 0 0 rgba(0,0,0,0.2)` }}
+                  >
+                    ▶ Start: W{nextLesson.week} · {nextLesson.topic}
+                  </button>
                 )}
               </div>
             )}
-          </button>
+          </div>
         )
       })}
     </div>

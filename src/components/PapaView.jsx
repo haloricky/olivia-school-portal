@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import LogLesson from './LogLesson'
 import Progress from './Progress'
 
-export default function PapaView({ onBack }) {
+export default function PapaView() {
+  const navigate = useNavigate()
   const [tab, setTab] = useState('log')
   const [lessons, setLessons] = useState([])
   const [loading, setLoading] = useState(true)
@@ -27,7 +29,7 @@ export default function PapaView({ onBack }) {
     <div className="min-h-screen bg-cream p-4 sm:p-6">
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <button onClick={onBack} className="press-btn bg-white px-4 py-2 rounded-chunky text-primary-dark font-bold">
+          <button onClick={() => navigate('/')} className="press-btn bg-white px-4 py-2 rounded-chunky text-primary-dark font-bold">
             ← Home
           </button>
           <h2 className="font-display text-3xl text-primary-dark">Papa</h2>
