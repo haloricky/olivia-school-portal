@@ -309,5 +309,155 @@ export const LESSON_CONTENT: Record<number, LessonContent> = {
     activity: "Make Olivia's Savings Jar! Decorate an empty jar and start saving coins. Draw what you are saving up for on a label!",
     worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
     game_type: "needs_wants_sort"
+  },
+
+  // ── MONTH 3 — The Wide World ──────────────────────────────────────────────
+
+  15: {
+    story: "'Olivia, imagine flying around the whole Earth. What would you pass over?' Papa pulls out the globe and they spin it together. 'Let's count the continents!'",
+    teaching: [
+      "There are 7 continents: Africa, Antarctica, Asia, Australia, Europe, North America, South America",
+      "Asia is the biggest continent — home to over half the world's people",
+      "Australia is both a continent and a single country",
+      "Antarctica is the coldest place on Earth — covered in ice all year",
+      "Each continent has its own unique animals, cultures, and landscapes"
+    ],
+    vocab: [
+      { en: "Continent", id: "Benua" },
+      { en: "Largest", id: "Terbesar" },
+      { en: "Smallest", id: "Terkecil" },
+      { en: "Population", id: "Penduduk" },
+      { en: "Equator", id: "Khatulistiwa" },
+      { en: "Pole", id: "Kutub" }
+    ],
+    activity: "Draw and label all 7 continents from memory! Colour each one a different colour and write one fact about each.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
+    game_type: "continent_facts_quiz"
+  },
+  16: {
+    story: "'Olivia, 2,500 years ago, people in Greece invented something we still use today — the idea that every citizen gets a vote.' Olivia's eyes go wide. 'Even children?' Papa laughs. 'When you grow up!'",
+    teaching: [
+      "Ancient Greece was one of the world's first great civilisations",
+      "The Greeks invented democracy — the idea that citizens vote and make decisions together",
+      "The ancient Olympics began in Greece in 776 BC — held every 4 years",
+      "Greek gods like Zeus, Athena, and Poseidon were believed to control nature and human life",
+      "Greek thinkers like Socrates, Plato, and Aristotle asked big questions about life"
+    ],
+    vocab: [
+      { en: "Democracy", id: "Demokrasi" },
+      { en: "Olympics", id: "Olimpiade" },
+      { en: "Myth", id: "Mitos" },
+      { en: "Philosopher", id: "Filsuf" },
+      { en: "Temple", id: "Kuil" },
+      { en: "Citizen", id: "Warga negara" }
+    ],
+    activity: "Design your own Greek-style shield! Draw a symbol in the centre that represents you — like a star, animal, or your favourite thing.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
+    game_type: "timeline_order"
+  },
+  17: {
+    story: "'Papa, where does rain come from?' Papa fills a pot with water. 'Let's find out together. Watch what happens when the sun heats the sea...'",
+    teaching: [
+      "The water cycle is nature's way of moving water around the Earth — forever and ever",
+      "Evaporation: the sun heats water in oceans and lakes, turning it into water vapour that rises",
+      "Condensation: water vapour cools high in the sky and forms clouds",
+      "Precipitation: when clouds become heavy, water falls as rain, snow, or hail",
+      "Collection: water flows into rivers and oceans — and the cycle starts all over again!"
+    ],
+    vocab: [
+      { en: "Evaporation", id: "Penguapan" },
+      { en: "Condensation", id: "Kondensasi" },
+      { en: "Precipitation", id: "Presipitasi" },
+      { en: "Cloud", id: "Awan" },
+      { en: "River", id: "Sungai" },
+      { en: "Cycle", id: "Siklus" }
+    ],
+    activity: "Make a water cycle in a bag! Put a little water in a zip-lock bag and tape it to a sunny window. Watch the water evaporate and condense!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
+    game_type: "cycle_sequence"
+  },
+  18: {
+    story: "'Olivia has 9 grapes. She eats 4. How many are left?' Papa puts 9 grapes on the table and moves 4 away. 'Count the ones still here!' Olivia counts carefully. 'Five!'",
+    teaching: [
+      "Subtraction means taking away from a group to find what remains",
+      "The − sign means we are taking away",
+      "We can cross out objects to see how many are left",
+      "Subtraction is the opposite of addition",
+      "Knowing subtraction helps with shopping, cooking, and everyday life!"
+    ],
+    vocab: [
+      { en: "Subtract", id: "Kurangi" },
+      { en: "Minus", id: "Dikurangi" },
+      { en: "Difference", id: "Selisih" },
+      { en: "Remaining", id: "Sisa" },
+      { en: "Take away", id: "Ambil" },
+      { en: "Left over", id: "Tersisa" }
+    ],
+    activity: "Subtraction with snacks! Put 10 raisins in a row. Eat 3. How many are left? Try again with different amounts. Math is delicious!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
+    game_type: "subtraction_visual"
+  },
+  19: {
+    story: "'Papa, if Indonesia and China have an argument, who decides who is right?' Papa smiles. 'Great question! That's exactly why the United Nations was created — so countries can talk it out instead of fight.'",
+    teaching: [
+      "The United Nations (UN) was created in 1945 to keep world peace",
+      "193 countries belong to the UN — almost every country on Earth",
+      "The UN protects human rights — things every person deserves, no matter where they live",
+      "UNICEF is the UN organisation that protects and supports children around the world",
+      "The UN uses 6 official languages: Arabic, Chinese, English, French, Russian, Spanish"
+    ],
+    vocab: [
+      { en: "United Nations", id: "Perserikatan Bangsa-Bangsa" },
+      { en: "Peace", id: "Perdamaian" },
+      { en: "Human rights", id: "Hak asasi manusia" },
+      { en: "Organisation", id: "Organisasi" },
+      { en: "Member", id: "Anggota" },
+      { en: "Cooperation", id: "Kerjasama" }
+    ],
+    activity: "Design your own country's flag! Give it a name, choose colours and a symbol that represents your values — peace, nature, or strength.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
+    game_type: "country_match"
+  },
+  20: {
+    story: "'Olivia, every country in the world makes art — but they all make it differently.' Papa opens a book showing paintings, puppets, and prints from across the globe. 'Let's go on an art adventure!'",
+    teaching: [
+      "Every culture in the world has its own unique form of visual art",
+      "Impressionism from France uses soft brushstrokes to capture light and feeling",
+      "Ukiyo-e from Japan creates detailed woodblock prints of nature and daily life",
+      "Aboriginal art from Australia uses dots to tell ancient stories called Dreamtime",
+      "Wayang from Indonesia creates shadow puppet art from buffalo hide"
+    ],
+    vocab: [
+      { en: "Art style", id: "Aliran seni" },
+      { en: "Painting", id: "Lukisan" },
+      { en: "Sculpture", id: "Patung" },
+      { en: "Printmaking", id: "Seni cetak" },
+      { en: "Mosaic", id: "Mosaik" },
+      { en: "Masterpiece", id: "Mahakarya" }
+    ],
+    activity: "Create your own masterpiece inspired by one of the world art styles! Try dot painting like Aboriginal art or soft watery colours like Impressionism.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
+    game_type: "art_style_match"
+  },
+  21: {
+    story: "'Papa, why do I have to eat vegetables?' Papa laughs. 'Let me ask you this — what does a car need to run properly?' Olivia thinks. 'Petrol?' 'Exactly! And your body needs healthy food — that's your petrol!'",
+    teaching: [
+      "A healthy lifestyle includes good food, enough sleep, regular exercise, and clean habits",
+      "Our bodies need fruits, vegetables, protein, and water every single day",
+      "Children need 9–11 hours of sleep each night for their brains to grow and learn",
+      "Exercise for at least 60 minutes every day keeps the heart and muscles strong",
+      "Washing hands, brushing teeth, and staying clean prevents illness"
+    ],
+    vocab: [
+      { en: "Healthy", id: "Sehat" },
+      { en: "Exercise", id: "Olahraga" },
+      { en: "Nutrition", id: "Gizi" },
+      { en: "Hygiene", id: "Kebersihan" },
+      { en: "Sleep", id: "Tidur" },
+      { en: "Habit", id: "Kebiasaan" }
+    ],
+    activity: "Make Olivia's Healthy Day chart! Draw all 24 hours and fill in: sleep time, meal times, exercise time, learning time, and play time.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
+    game_type: "habits_sort"
   }
 };
