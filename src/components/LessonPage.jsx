@@ -7,19 +7,19 @@ import WorldMapGame from './games/WorldMapGame'
 import WorldMapDisplay from './WorldMapDisplay'
 import EgyptStory from './games/EgyptStory'
 import BodyStory from './games/BodyStory'
+import NumbersGame from './games/NumbersGame'
+import RulesStory from './games/RulesStory'
+import BatikStory from './games/BatikStory'
+import FeelingsGame from './games/FeelingsGame'
 
 function FlipCard({ en, id, index }) {
   const [flipped, setFlipped] = useState(false)
   const colors = [
-    { bg: '#FF85A1', dark: '#cc5a74' },
-    { bg: '#FFB347', dark: '#cc8a2e' },
-    { bg: '#87CEEB', dark: '#5aa0bd' },
-    { bg: '#90EE90', dark: '#5ab85a' },
-    { bg: '#DDA0DD', dark: '#aa6eaa' },
-    { bg: '#F4A460', dark: '#c27830' },
+    { bg: '#FF85A1', dark: '#cc5a74' },{ bg: '#FFB347', dark: '#cc8a2e' },
+    { bg: '#87CEEB', dark: '#5aa0bd' },{ bg: '#90EE90', dark: '#5ab85a' },
+    { bg: '#DDA0DD', dark: '#aa6eaa' },{ bg: '#F4A460', dark: '#c27830' },
   ]
   const c = colors[index % colors.length]
-
   return (
     <div className="cursor-pointer select-none" style={{ perspective: '600px', height: '120px' }}
       onClick={() => setFlipped(f => !f)}>
@@ -173,6 +173,10 @@ export default function LessonPage() {
             {content.game_type === 'continents' ? <WorldMapGame />
               : content.game_type === 'egypt' ? <EgyptStory />
               : content.game_type === 'body' ? <BodyStory />
+              : content.game_type === 'numbers' ? <NumbersGame />
+              : content.game_type === 'rules' ? <RulesStory />
+              : content.game_type === 'batik' ? <BatikStory />
+              : content.game_type === 'feelings' ? <FeelingsGame />
               : <ComingSoonGame gameType={content.game_type} />}
           </div>
         )}
