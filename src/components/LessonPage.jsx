@@ -11,6 +11,13 @@ import NumbersGame from './games/NumbersGame'
 import RulesGame from './games/RulesGame'
 import BatikGame from './games/BatikGame'
 import FeelingsGame from './games/FeelingsGame'
+import AfricaGame from './games/AfricaGame'
+import InventionsGame from './games/InventionsGame'
+import PlantGame from './games/PlantGame'
+import AdditionGame from './games/AdditionGame'
+import FamiliesGame from './games/FamiliesGame'
+import InstrumentsGame from './games/InstrumentsGame'
+import NeedsWantsGame from './games/NeedsWantsGame'
 
 function FlipCard({ en, id, index }) {
   const [flipped, setFlipped] = useState(false)
@@ -144,6 +151,13 @@ export default function LessonPage() {
               : content.game_type === 'rules' ? <RulesGame />
               : content.game_type === 'batik' ? <BatikGame />
               : content.game_type === 'feelings' ? <FeelingsGame />
+              : content.game_type === 'africa_animals' ? <AfricaGame />
+              : content.game_type === 'inventions_match' ? <InventionsGame />
+              : content.game_type === 'plant_label' ? <PlantGame />
+              : content.game_type === 'addition_visual' ? <AdditionGame />
+              : content.game_type === 'families_quiz' ? <FamiliesGame />
+              : content.game_type === 'instruments_match' ? <InstrumentsGame />
+              : content.game_type === 'needs_wants_sort' ? <NeedsWantsGame />
               : <ComingSoonGame gameType={content.game_type} />}
           </div>
         )}
