@@ -4,7 +4,7 @@ import { LESSON_CONTENT } from '../data/lessonContent'
 import { CURRICULUM } from '../data/curriculum'
 import { SUBJECT_BY_KEY } from '../data/subjects'
 import WorldMapGame from './games/WorldMapGame'
-import WorldMapDisplay from './WorldMapDisplay'
+import WorldMapDisplay from './games/WorldMapDisplay'
 import EgyptGame from './games/EgyptGame'
 import BodyGame from './games/BodyGame'
 import NumbersGame from './games/NumbersGame'
@@ -18,6 +18,13 @@ import AdditionGame from './games/AdditionGame'
 import FamiliesGame from './games/FamiliesGame'
 import InstrumentsGame from './games/InstrumentsGame'
 import NeedsWantsGame from './games/NeedsWantsGame'
+import ContinentQuizGame from './games/ContinentQuizGame'
+import GreeceGame from './games/GreeceGame'
+import WaterCycleGame from './games/WaterCycleGame'
+import SubtractionGame from './games/SubtractionGame'
+import UNGame from './games/UNGame'
+import WorldArtGame from './games/WorldArtGame'
+import HabitsGame from './games/HabitsGame'
 
 function FlipCard({ en, id, index }) {
   const [flipped, setFlipped] = useState(false)
@@ -158,6 +165,13 @@ export default function LessonPage() {
               : content.game_type === 'families_quiz' ? <FamiliesGame />
               : content.game_type === 'instruments_match' ? <InstrumentsGame />
               : content.game_type === 'needs_wants_sort' ? <NeedsWantsGame />
+              : content.game_type === 'continent_facts_quiz' ? <ContinentQuizGame />
+              : content.game_type === 'timeline_order' ? <GreeceGame />
+              : content.game_type === 'cycle_sequence' ? <WaterCycleGame />
+              : content.game_type === 'subtraction_visual' ? <SubtractionGame />
+              : content.game_type === 'country_match' ? <UNGame />
+              : content.game_type === 'art_style_match' ? <WorldArtGame />
+              : content.game_type === 'habits_sort' ? <HabitsGame />
               : <ComingSoonGame gameType={content.game_type} />}
           </div>
         )}
