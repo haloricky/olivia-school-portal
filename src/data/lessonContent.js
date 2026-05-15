@@ -614,5 +614,162 @@ export const LESSON_CONTENT: Record<number, LessonContent> = {
     activity: "Olivia's Eco Challenge! For one whole day, count how many times you Reduce, Reuse, or Recycle something. Keep a tally and share your score with Papa!",
     worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
     game_type: "3r_sort"
+  },
+
+  // ── MONTH 5 — Humans and Stories ─────────────────────────────────────────
+
+  29: {
+    story: "'Papa, we live on an island, right?' Olivia asks. Papa nods. 'Not just any island — we live in the world's largest archipelago. Indonesia has over 17,000 islands!' Olivia's jaw drops. 'That's so many!'",
+    teaching: [
+      "Indonesia is the world's largest archipelago — a group of islands — with over 17,000 islands",
+      "Indonesia spans 5,100 km from east to west — wider than the continental United States!",
+      "Kalimantan (Borneo) is the largest Indonesian island — the 3rd largest island in the world",
+      "Indonesia has extraordinary biodiversity — home to orangutans, Komodo dragons, Sumatran tigers, and thousands of unique species",
+      "Indonesia is on the 'Ring of Fire' — it has over 130 active volcanoes!",
+      "An endemic species lives only in one specific place — Indonesia has thousands of endemic plants and animals"
+    ],
+    vocab: [
+      { en: "Archipelago",  id: "Kepulauan" },
+      { en: "Biodiversity", id: "Keanekaragaman hayati" },
+      { en: "Volcano",      id: "Gunung berapi" },
+      { en: "Endemic",      id: "Endemik" },
+      { en: "Rainforest",   id: "Hutan hujan" },
+      { en: "Island",       id: "Pulau" }
+    ],
+    activity: "Draw Indonesia's Big Five! Draw the Komodo dragon, orangutan, Sumatran tiger, Birds of Paradise, and proboscis monkey — and write one fact about each.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month5.pdf",
+    game_type: "island_label"
+  },
+  30: {
+    story: "'Papa, who was the most creative person who ever lived?' Papa thinks carefully. 'That's a hard question. But during the Renaissance, there were so many geniuses — artists, scientists, and writers all at once!'",
+    teaching: [
+      "The Renaissance (1300s–1600s) was a great burst of art, science, and learning that began in Italy",
+      "Leonardo da Vinci painted the Mona Lisa AND designed flying machines, robots, and tanks — 500 years before they were built!",
+      "Michelangelo spent 4 years lying on his back to paint the Sistine Chapel ceiling",
+      "Galileo Galilei improved the telescope and proved that Earth orbits the Sun",
+      "Johannes Gutenberg invented the printing press (~1440) — making it possible to print books quickly and spread knowledge worldwide",
+      "The Renaissance was triggered by the rediscovery of ancient Greek and Roman ideas about art, philosophy, and science"
+    ],
+    vocab: [
+      { en: "Renaissance",  id: "Renaisans" },
+      { en: "Genius",       id: "Jenius" },
+      { en: "Invention",    id: "Penemuan" },
+      { en: "Masterpiece",  id: "Mahakarya" },
+      { en: "Telescope",    id: "Teleskop" },
+      { en: "Printing press", id: "Mesin cetak" }
+    ],
+    activity: "Be like da Vinci! Choose one thing you want to invent — draw it, label all its parts, and explain how it would work. Think boldly!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month5.pdf",
+    game_type: "inventor_match"
+  },
+  31: {
+    story: "'Papa, how many planets are there?' Olivia looks up at the night sky. 'Eight,' Papa says softly. 'Each one spinning in a perfect orbit around our Sun. Let's meet them all.'",
+    teaching: [
+      "Our solar system has 8 planets — all orbiting (going around) the Sun",
+      "Order from the Sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune",
+      "Jupiter is the largest planet — 1,300 Earths could fit inside it!",
+      "Saturn has magnificent rings made of ice and rock — and is so light it would float on water",
+      "Earth is the only known planet with liquid water, oxygen, and life",
+      "A helpful saying: 'My Very Energetic Mother Just Served Us Noodles' — first letters = planet names in order!"
+    ],
+    vocab: [
+      { en: "Planet",       id: "Planet" },
+      { en: "Orbit",        id: "Orbit" },
+      { en: "Solar system", id: "Tata surya" },
+      { en: "Gravity",      id: "Gravitasi" },
+      { en: "Atmosphere",   id: "Atmosfer" },
+      { en: "Galaxy",       id: "Galaksi" }
+    ],
+    activity: "Draw Olivia's Solar System! Using a large piece of paper, draw the Sun in the centre and all 8 planets in order. Label each one with a fun fact!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month5.pdf",
+    game_type: "planet_order"
+  },
+  32: {
+    story: "'Papa, what time is it?' Olivia points at the clock on the wall. 'Can you read it yourself?' Papa asks. Olivia squints at the hands. 'That's what we're going to learn today!'",
+    teaching: [
+      "A clock has a short hand (hour hand) and a long hand (minute hand)",
+      "The short hand shows the HOUR — there are 12 numbers on a clock",
+      "The long hand shows the MINUTES — one full circle = 60 minutes = 1 hour",
+      "When the long hand points to 12, it is exactly o'clock (no extra minutes)",
+      "When the long hand points to 6, it means 30 minutes past — we say 'half past'",
+      "There are 24 hours in a day — morning hours are AM, afternoon/evening hours are PM"
+    ],
+    vocab: [
+      { en: "Hour",    id: "Jam" },
+      { en: "Minute",  id: "Menit" },
+      { en: "Second",  id: "Detik" },
+      { en: "Morning", id: "Pagi" },
+      { en: "Noon",    id: "Siang" },
+      { en: "Clock",   id: "Jam dinding" }
+    ],
+    activity: "Make Olivia's Paper Clock! Cut two hands from cardboard, attach with a brad fastener to a paper plate. Write the numbers and practise setting different times!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month5.pdf",
+    game_type: "clock_reading"
+  },
+  33: {
+    story: "'Papa, what's the difference between a President and a King?' Olivia asks at breakfast. Papa puts down his coffee. 'Another great question! Let's explore how countries choose their leaders.'",
+    teaching: [
+      "Different countries have different types of leaders — and different ways of choosing them",
+      "A President is elected (chosen by public vote) — like Indonesia's Presiden",
+      "A Prime Minister leads a parliamentary government — like in the UK, Australia, and Malaysia",
+      "A King or Queen leads a monarchy — power is inherited within a royal family",
+      "A Mayor runs a city; a Governor runs a province",
+      "Nelson Mandela, Soekarno, and Mahatma Gandhi are famous leaders known for courage, sacrifice, and serving their people"
+    ],
+    vocab: [
+      { en: "President",      id: "Presiden" },
+      { en: "Government",     id: "Pemerintah" },
+      { en: "Election",       id: "Pemilihan" },
+      { en: "Parliament",     id: "Parlemen" },
+      { en: "Monarchy",       id: "Monarki" },
+      { en: "Leader",         id: "Pemimpin" }
+    ],
+    activity: "Design Olivia's Ideal Leader! Write or draw what qualities the perfect leader should have — honest? courageous? kind? fair? — and give them a name!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month5.pdf",
+    game_type: "leader_match"
+  },
+  34: {
+    story: "'Papa, tell me a story!' Olivia cuddles up. 'Better than that,' Papa says, 'let's discover stories from around the world — tales that have been told for hundreds of years.'",
+    teaching: [
+      "Every culture on Earth has its own folktales — stories passed down through generations",
+      "Folktales teach important values like honesty, kindness, courage, and humility",
+      "Malin Kundang (Indonesia) — a son who denied his poor mother and was turned to stone",
+      "Kancil stories (Indonesia) — the clever mouse-deer who uses wit to outsmart larger animals",
+      "Cinderella exists in over 500 different versions across cultures from Europe to Asia to Africa!",
+      "The structure of most stories: a problem → attempts to solve it → a resolution and lesson"
+    ],
+    vocab: [
+      { en: "Folktale",    id: "Cerita rakyat" },
+      { en: "Moral",       id: "Pesan moral" },
+      { en: "Character",   id: "Tokoh" },
+      { en: "Setting",     id: "Latar" },
+      { en: "Plot",        id: "Alur cerita" },
+      { en: "Legend",      id: "Legenda" }
+    ],
+    activity: "Write Olivia's Own Folktale! Choose an animal character, give them a problem to solve, and write or draw the 4 steps of their story. What is the moral?",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month5.pdf",
+    game_type: "story_sequence"
+  },
+  35: {
+    story: "'Papa, I can't open this jar!' Olivia strains and strains. 'Don't give up,' Papa says. 'Think — what are all the different ways you could open it?' Olivia thinks... then gets a cloth for grip. It opens!",
+    teaching: [
+      "Problem solving means finding the best solution when faced with a challenge",
+      "Step 1: Understand the problem — what exactly is wrong?",
+      "Step 2: Think of different possible solutions — at least 2 or 3!",
+      "Step 3: Choose the best solution and try it",
+      "Step 4: If it doesn't work, learn from it and try a different approach",
+      "Good problem-solvers are patient, creative, and not afraid of making mistakes"
+    ],
+    vocab: [
+      { en: "Problem",      id: "Masalah" },
+      { en: "Solution",     id: "Solusi" },
+      { en: "Challenge",    id: "Tantangan" },
+      { en: "Strategy",     id: "Strategi" },
+      { en: "Patience",     id: "Kesabaran" },
+      { en: "Perseverance", id: "Ketekunan" }
+    ],
+    activity: "Olivia's Problem Journal! Find one real problem in your day — big or small — and write 3 different ways you could solve it. Which one did you choose and why?",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month5.pdf",
+    game_type: "scenario_sort"
   }
 };
