@@ -1,4 +1,18 @@
-export const LESSON_CONTENT = {
+export interface VocabItem {
+  en: string;
+  id: string;
+}
+
+export interface LessonContent {
+  story: string;
+  teaching: string[];
+  vocab: VocabItem[];
+  activity: string;
+  worksheet_url: string;
+  game_type: string;
+}
+
+export const LESSON_CONTENT: Record<number, LessonContent> = {
   1: {
     story: "Papa closes Olivia's eyes and says: 'Imagine you can fly like a bird — so high you can see the whole Earth from above. What do you see?'",
     teaching: [
@@ -145,5 +159,155 @@ export const LESSON_CONTENT = {
     activity: "Make Olivia's Feelings Wheel! Draw a circle divided into 6 parts — one feeling per section, each with its own colour and expression.",
     worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month1.pdf",
     game_type: "feelings"
+  },
+
+  // ── MONTH 2 — Living Things ──────────────────────────────────────────────
+
+  8: {
+    story: "'Olivia, imagine a place so enormous it could fit three of our whole country — and it's filled with the most amazing animals in the world. That's Africa!'",
+    teaching: [
+      "Africa is the second-largest continent in the world",
+      "The Sahara Desert in Africa is the biggest desert on Earth",
+      "Africa is home to the world's largest land animal — the elephant",
+      "The Nile River (from Week 2!) is in Africa — the longest river in the world",
+      "Africa has 54 countries and hundreds of different languages"
+    ],
+    vocab: [
+      { en: "Savannah", id: "Sabana" },
+      { en: "Elephant", id: "Gajah" },
+      { en: "Lion", id: "Singa" },
+      { en: "Desert", id: "Gurun" },
+      { en: "Migration", id: "Migrasi" },
+      { en: "Wildlife", id: "Satwa liar" }
+    ],
+    activity: "Draw your favourite African animal in its home — a lion in the savannah or an elephant at the watering hole!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
+    game_type: "africa_animals"
+  },
+  9: {
+    story: "'Olivia, did you know something you use every single day was invented in China over 2,000 years ago?' Olivia looks puzzled. 'Paper!' Papa holds up her drawing book.",
+    teaching: [
+      "Ancient China created four famous inventions that changed the world",
+      "Paper was invented in China — before that, people wrote on bamboo and silk",
+      "The compass helped sailors navigate the oceans for the first time",
+      "Printing allowed books to be made quickly, sharing ideas everywhere",
+      "Fireworks were invented in China for celebrations — and are still used today!"
+    ],
+    vocab: [
+      { en: "Invention", id: "Penemuan" },
+      { en: "Paper", id: "Kertas" },
+      { en: "Compass", id: "Kompas" },
+      { en: "Printing", id: "Percetakan" },
+      { en: "Silk", id: "Sutra" },
+      { en: "Fireworks", id: "Kembang api" }
+    ],
+    activity: "Make a mini accordion book! Fold paper into 6 sections and draw one Chinese invention in each section.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
+    game_type: "inventions_match"
+  },
+  10: {
+    story: "'Olivia, how do you think plants eat?' She thinks hard. 'From the soil?' Papa nods, 'Partly right! But they also eat sunshine. They literally eat light!'",
+    teaching: [
+      "Plants make their own food using sunlight, water, and air — called photosynthesis",
+      "Leaves are the plant's food factory — they capture sunlight",
+      "Roots soak up water and minerals from the soil",
+      "The stem carries water up from the roots to the leaves",
+      "Plants give us oxygen as a by-product of making food — we breathe it!"
+    ],
+    vocab: [
+      { en: "Leaf", id: "Daun" },
+      { en: "Root", id: "Akar" },
+      { en: "Stem", id: "Batang" },
+      { en: "Flower", id: "Bunga" },
+      { en: "Sunlight", id: "Sinar matahari" },
+      { en: "Photosynthesis", id: "Fotosintesis" }
+    ],
+    activity: "Plant a bean seed in a cup of soil! Put it by the window and draw what you see each day for one week.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
+    game_type: "plant_label"
+  },
+  11: {
+    story: "'Olivia, Papa has 3 oranges. Then he buys 4 more at the market. How many does he have now?' Olivia counts on her fingers. 'Seven!' She beams.",
+    teaching: [
+      "Addition means combining two groups into one bigger group",
+      "The + sign means we are putting things together",
+      "The = sign means 'is the same as'",
+      "We can use our fingers or count objects to add",
+      "Addition works with any objects: apples, stars, or elephants!"
+    ],
+    vocab: [
+      { en: "Add", id: "Tambah" },
+      { en: "Total", id: "Jumlah" },
+      { en: "Plus", id: "Ditambah" },
+      { en: "Equals", id: "Sama dengan" },
+      { en: "Sum", id: "Hasil penjumlahan" },
+      { en: "Group", id: "Kelompok" }
+    ],
+    activity: "Go on an addition treasure hunt! Collect 3 sticks and 4 leaves. Count them together. Then try again with different amounts!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
+    game_type: "addition_visual"
+  },
+  12: {
+    story: "'Papa, does everyone's family look the same as ours?' Papa smiles. 'Not at all! In Japan, Grandpa might live with you. In Brazil, you might have ten cousins in one house!'",
+    teaching: [
+      "Families come in all sizes — small, big, and everything in between",
+      "Some families have one parent, some have two, some are raised by grandparents",
+      "Families share love, food, stories, and traditions",
+      "Every country has its own family traditions and celebrations",
+      "Our family is special — however it looks!"
+    ],
+    vocab: [
+      { en: "Family", id: "Keluarga" },
+      { en: "Parent", id: "Orang tua" },
+      { en: "Sibling", id: "Saudara" },
+      { en: "Grandparent", id: "Kakek / Nenek" },
+      { en: "Tradition", id: "Tradisi" },
+      { en: "Culture", id: "Budaya" }
+    ],
+    activity: "Draw Olivia's Family Tree! Include Papa, Mama, and all the grandparents. Write each person's name inside a leaf shape.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
+    game_type: "families_quiz"
+  },
+  13: {
+    story: "'Olivia, listen!' Papa plays a gamelan recording. The gentle chiming fills the room. 'This music is from Java. Every island in Indonesia has its own special sound.'",
+    teaching: [
+      "Indonesia has hundreds of traditional musical instruments",
+      "The gamelan orchestra is made of bronze gongs and drums — it comes from Java and Bali",
+      "The angklung is made of bamboo tubes from West Java — it's a UNESCO treasure",
+      "The kendang is a traditional drum used in many dances and ceremonies",
+      "Music connects people to their culture and history"
+    ],
+    vocab: [
+      { en: "Music", id: "Musik" },
+      { en: "Instrument", id: "Alat musik" },
+      { en: "Drum", id: "Gendang" },
+      { en: "Bamboo", id: "Bambu" },
+      { en: "Orchestra", id: "Orkestra" },
+      { en: "Melody", id: "Melodi" }
+    ],
+    activity: "Make a DIY instrument! Fill 4 glasses with different amounts of water and tap gently with a spoon. Do they make different sounds?",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
+    game_type: "instruments_match"
+  },
+  14: {
+    story: "'Papa, can I have that giant teddy bear?' Papa gives a warm smile. 'Let's think about it together — is it something you need, or something you want?' Olivia scrunches her face. 'Want... but I want it a LOT!'",
+    teaching: [
+      "A NEED is something you must have to live — like food, water, clothes, and a home",
+      "A WANT is something you would like but can survive without — like toys and sweets",
+      "Saving money means keeping some for later instead of spending it all now",
+      "When we save, we can afford bigger and better things in the future",
+      "Making good money choices is a skill everyone needs!"
+    ],
+    vocab: [
+      { en: "Need", id: "Kebutuhan" },
+      { en: "Want", id: "Keinginan" },
+      { en: "Save", id: "Menabung" },
+      { en: "Spend", id: "Belanja" },
+      { en: "Money", id: "Uang" },
+      { en: "Piggy bank", id: "Celengan" }
+    ],
+    activity: "Make Olivia's Savings Jar! Decorate an empty jar and start saving coins. Draw what you are saving up for on a label!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month2.pdf",
+    game_type: "needs_wants_sort"
   }
-}
+};
