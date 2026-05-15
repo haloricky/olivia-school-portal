@@ -459,5 +459,160 @@ export const LESSON_CONTENT: Record<number, LessonContent> = {
     activity: "Make Olivia's Healthy Day chart! Draw all 24 hours and fill in: sleep time, meal times, exercise time, learning time, and play time.",
     worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month3.pdf",
     game_type: "habits_sort"
+  },
+
+  // ── MONTH 4 — My Wonderful World ─────────────────────────────────────────
+
+  22: {
+    story: "'Papa, why is it so hot here but Grandma says it snows where she lives?' Papa smiles. 'That's because of climate, Olivia! Every part of the world has its own special weather pattern.'",
+    teaching: [
+      "Climate is the long-term pattern of weather in a place — not just today's weather",
+      "Tropical climates (like Indonesia) are hot and rainy all year round",
+      "Temperate climates have four seasons: spring, summer, autumn, and winter",
+      "Polar climates near the North and South Poles are extremely cold all year",
+      "Desert climates get very little rain and have huge temperature differences between day and night",
+      "Earth tilts as it orbits the sun — this tilt creates the seasons!"
+    ],
+    vocab: [
+      { en: "Climate",      id: "Iklim" },
+      { en: "Tropical",     id: "Tropis" },
+      { en: "Season",       id: "Musim" },
+      { en: "Temperature",  id: "Suhu" },
+      { en: "Rainfall",     id: "Curah hujan" },
+      { en: "Atmosphere",   id: "Atmosfer" }
+    ],
+    activity: "Draw Olivia's Climate Wheel! Divide a circle into 4 zones (Tropical, Temperate, Polar, Desert) and draw the animals and plants that live in each.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
+    game_type: "weather_sort"
+  },
+  23: {
+    story: "'Olivia, 500 years ago, brave sailors set off in tiny wooden ships not knowing where they would land.' Papa draws a ship on paper. 'They were called explorers — and they changed the whole world.'",
+    teaching: [
+      "The Age of Exploration (1400s–1600s) was when Europeans sailed to discover new lands and trade routes",
+      "Christopher Columbus (Spain, 1492) reached the Americas — calling it the 'New World'",
+      "Ferdinand Magellan's crew completed the first journey around the entire globe (1519–1522)",
+      "Vasco da Gama found the sea route from Europe around Africa to India (1498)",
+      "Marco Polo travelled overland to China (1271) and wrote famous books about his adventures"
+    ],
+    vocab: [
+      { en: "Explorer",      id: "Penjelajah" },
+      { en: "Voyage",        id: "Pelayaran" },
+      { en: "Navigation",    id: "Navigasi" },
+      { en: "Compass",       id: "Kompas" },
+      { en: "Discovery",     id: "Penemuan" },
+      { en: "Trade route",   id: "Jalur perdagangan" }
+    ],
+    activity: "Draw Olivia's Explorer Ship! Design your own sailing vessel with a flag and name. Where would you sail to if you were an explorer 500 years ago?",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
+    game_type: "explorer_match"
+  },
+  24: {
+    story: "'Papa, how do we know if an animal is a mammal or a fish?' Papa sits down with a big book. 'Great question! Scientists sort animals into groups by what they have in common. Let's explore!'",
+    teaching: [
+      "Scientists sort animals into groups called classes — mammals, birds, reptiles, fish, and amphibians",
+      "Mammals are warm-blooded, have fur or hair, and feed babies milk — humans are mammals!",
+      "Birds have feathers, wings, and lay eggs — even penguins and ostriches that cannot fly",
+      "Reptiles have scaly skin and are cold-blooded — like snakes, crocodiles, and geckos",
+      "Amphibians can live in water AND on land — like frogs, which start as tadpoles in water"
+    ],
+    vocab: [
+      { en: "Mammal",     id: "Mamalia" },
+      { en: "Reptile",    id: "Reptil" },
+      { en: "Amphibian",  id: "Amfibi" },
+      { en: "Feathers",   id: "Bulu" },
+      { en: "Cold-blooded", id: "Berdarah dingin" },
+      { en: "Classify",   id: "Mengklasifikasi" }
+    ],
+    activity: "Create Olivia's Animal Album! Draw 1 animal from each group (mammal, bird, reptile, fish, amphibian) and write 2 facts about each one.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
+    game_type: "animal_classify"
+  },
+  25: {
+    story: "'Papa, I can see shapes EVERYWHERE!' Olivia looks around the kitchen. 'The plate is a circle, the window is a rectangle, the pizza slice is a triangle!' Papa grins. 'You've got a mathematician's eyes!'",
+    teaching: [
+      "Shapes are all around us — in buildings, nature, art, and everyday objects",
+      "A triangle has 3 sides and 3 corners — the strongest shape in nature and engineering",
+      "A square has 4 equal sides — stretch it and it becomes a rectangle",
+      "A circle has no sides or corners — it is perfectly round",
+      "A hexagon has 6 sides — bees use it to build the most efficient honeycombs",
+      "An octagon has 8 sides — you see it every day on STOP signs!"
+    ],
+    vocab: [
+      { en: "Triangle",   id: "Segitiga" },
+      { en: "Square",     id: "Persegi" },
+      { en: "Rectangle",  id: "Persegi panjang" },
+      { en: "Circle",     id: "Lingkaran" },
+      { en: "Hexagon",    id: "Heksagon" },
+      { en: "Octagon",    id: "Oktagon" }
+    ],
+    activity: "Go on a Shape Hunt! Walk around your home and find 2 examples of each shape — circle, square, rectangle, triangle. Draw and label what you find!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
+    game_type: "shape_sort"
+  },
+  26: {
+    story: "'Papa, is it fair that some children don't get to go to school?' Papa looks thoughtful. 'No, it isn't. That's why the world agreed: every child has the RIGHT to an education. And with rights come duties.'",
+    teaching: [
+      "Rights are things every person deserves simply because they are human",
+      "Duties are responsibilities we have toward other people and our community",
+      "Rights and duties always go together — you cannot have one without the other",
+      "The UN Convention on the Rights of the Child lists 54 rights for every child on Earth",
+      "Rights include: education, healthcare, safety, clean water, and free speech",
+      "Duties include: studying hard, following rules, respecting others, and protecting the environment"
+    ],
+    vocab: [
+      { en: "Rights",        id: "Hak" },
+      { en: "Duties",        id: "Kewajiban" },
+      { en: "Responsibility", id: "Tanggung jawab" },
+      { en: "Citizen",       id: "Warga negara" },
+      { en: "Fairness",      id: "Keadilan" },
+      { en: "Community",     id: "Komunitas" }
+    ],
+    activity: "Make Olivia's Rights and Duties Booklet! Fold 3 pages — on each page, draw one right on the left side and its matching duty on the right side.",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
+    game_type: "rights_match"
+  },
+  27: {
+    story: "'Papa, can we watch the Saman dance video again?' Olivia's eyes are wide with wonder. 'How do all those people move exactly the same way?' Papa smiles. 'Years of practice — and deep pride in their culture.'",
+    teaching: [
+      "Indonesia has over 3,000 traditional dances — one of the richest dance cultures in the world",
+      "Saman dance from Aceh: incredibly fast synchronised hand claps and movements by large groups",
+      "Kecak dance from Bali: men chant 'cak-cak-cak' while telling the Ramayana story — no instruments!",
+      "Pendet dance from Bali: women perform a sacred welcoming dance carrying flower offerings",
+      "Reog Ponorogo from East Java: spectacular with a giant tiger-peacock mask weighing up to 50kg",
+      "Traditional dances preserve Indonesia's history, religion, and stories for future generations"
+    ],
+    vocab: [
+      { en: "Dance",         id: "Tari" },
+      { en: "Traditional",   id: "Tradisional" },
+      { en: "Culture",       id: "Budaya" },
+      { en: "Performance",   id: "Pertunjukan" },
+      { en: "Costume",       id: "Kostum" },
+      { en: "Ceremony",      id: "Upacara" }
+    ],
+    activity: "Learn one move from Saman! Watch a video of Saman dance with Papa and copy the hand-clapping rhythm together. Culture lives in our hands and hearts!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
+    game_type: "dance_match"
+  },
+  28: {
+    story: "'Papa, there was rubbish all over the beach today.' Olivia looks sad. 'Can we fix it?' Papa nods. 'Absolutely. And it starts with three magic words: Reduce, Reuse, Recycle.'",
+    teaching: [
+      "Our planet is getting warmer because of pollution — we must all work together to protect it",
+      "REDUCE means using less — less electricity, less water, less plastic, less waste",
+      "REUSE means using things again instead of throwing them away",
+      "RECYCLE means turning old materials (paper, glass, metal, plastic) into new things",
+      "Small everyday actions add up — one person's habits multiplied by billions makes a huge difference",
+      "Indonesia produces 6.8 million tonnes of plastic waste per year — we can help change that!"
+    ],
+    vocab: [
+      { en: "Reduce",     id: "Kurangi" },
+      { en: "Reuse",      id: "Gunakan kembali" },
+      { en: "Recycle",    id: "Daur ulang" },
+      { en: "Pollution",  id: "Polusi" },
+      { en: "Environment", id: "Lingkungan" },
+      { en: "Waste",      id: "Sampah" }
+    ],
+    activity: "Olivia's Eco Challenge! For one whole day, count how many times you Reduce, Reuse, or Recycle something. Keep a tally and share your score with Papa!",
+    worksheet_url: "https://hqlryqbsymibzgmwnrse.supabase.co/storage/v1/object/public/worksheets/month4.pdf",
+    game_type: "3r_sort"
   }
 };
