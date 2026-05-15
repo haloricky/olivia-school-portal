@@ -25,6 +25,13 @@ import SubtractionGame from './games/SubtractionGame'
 import UNGame from './games/UNGame'
 import WorldArtGame from './games/WorldArtGame'
 import HabitsGame from './games/HabitsGame'
+import WeatherSortGame from './games/WeatherSortGame'
+import ExplorerMatchGame from './games/ExplorerMatchGame'
+import AnimalClassifyGame from './games/AnimalClassifyGame'
+import ShapeSortGame from './games/ShapeSortGame'
+import RightsMatchGame from './games/RightsMatchGame'
+import DanceMatchGame from './games/DanceMatchGame'
+import ThreeRSortGame from './games/ThreeRSortGame'
 
 function FlipCard({ en, id, index }) {
   const [flipped, setFlipped] = useState(false)
@@ -172,6 +179,13 @@ export default function LessonPage() {
               : content.game_type === 'country_match' ? <UNGame />
               : content.game_type === 'art_style_match' ? <WorldArtGame />
               : content.game_type === 'habits_sort' ? <HabitsGame />
+              : content.game_type === 'weather_sort' ? <WeatherSortGame />
+              : content.game_type === 'explorer_match' ? <ExplorerMatchGame />
+              : content.game_type === 'animal_classify' ? <AnimalClassifyGame />
+              : content.game_type === 'shape_sort' ? <ShapeSortGame />
+              : content.game_type === 'rights_match' ? <RightsMatchGame />
+              : content.game_type === 'dance_match' ? <DanceMatchGame />
+              : content.game_type === '3r_sort' ? <ThreeRSortGame />
               : <ComingSoonGame gameType={content.game_type} />}
           </div>
         )}
