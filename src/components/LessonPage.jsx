@@ -32,6 +32,13 @@ import ShapeSortGame from './games/ShapeSortGame'
 import RightsMatchGame from './games/RightsMatchGame'
 import DanceMatchGame from './games/DanceMatchGame'
 import ThreeRSortGame from './games/ThreeRSortGame'
+import IslandLabelGame from './games/IslandLabelGame'
+import InventorMatchGame from './games/InventorMatchGame'
+import PlanetOrderGame from './games/PlanetOrderGame'
+import ClockReadingGame from './games/ClockReadingGame'
+import LeaderMatchGame from './games/LeaderMatchGame'
+import StorySequenceGame from './games/StorySequenceGame'
+import ScenarioSortGame from './games/ScenarioSortGame'
 
 function FlipCard({ en, id, index }) {
   const [flipped, setFlipped] = useState(false)
@@ -186,6 +193,13 @@ export default function LessonPage() {
               : content.game_type === 'rights_match' ? <RightsMatchGame />
               : content.game_type === 'dance_match' ? <DanceMatchGame />
               : content.game_type === '3r_sort' ? <ThreeRSortGame />
+              : content.game_type === 'island_label' ? <IslandLabelGame />
+              : content.game_type === 'inventor_match' ? <InventorMatchGame />
+              : content.game_type === 'planet_order' ? <PlanetOrderGame />
+              : content.game_type === 'clock_reading' ? <ClockReadingGame />
+              : content.game_type === 'leader_match' ? <LeaderMatchGame />
+              : content.game_type === 'story_sequence' ? <StorySequenceGame />
+              : content.game_type === 'scenario_sort' ? <ScenarioSortGame />
               : <ComingSoonGame gameType={content.game_type} />}
           </div>
         )}
