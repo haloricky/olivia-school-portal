@@ -64,3 +64,4 @@ Connect the GitHub repo to Vercel. `vercel.json` already handles SPA fallback ro
   - My Map (7 subject cards, expandable)
   - Memory Wall (color-coded lesson cards)
   - My Stars (animated star total)
+<!-- rebuild: all 35 weeks now live -->
